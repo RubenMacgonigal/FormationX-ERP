@@ -1,0 +1,54 @@
+[
+  {
+    "id": 1,
+    "company": "Repco Trade",
+    "contact": "Robert Lee",
+    "email": "trade@repco.com.au",
+    "phone": "0478 111 222",
+    "address": "88 Industrial Ave, Parramatta NSW 2150",
+    "abn": "66 777 888 999",
+    "category": "Engine Parts",
+    "paymentTerms": 30,
+    "status": "Active",
+    "notes": ""
+  },
+  {
+    "id": 2,
+    "company": "Burson Auto Parts",
+    "contact": "Linda Nguyen",
+    "email": "linda@burson.com.au",
+    "phone": "0489 222 333",
+    "address": "15 Factory Rd, Clayton VIC 3168",
+    "abn": "77 888 999 000",
+    "category": "Brakes & Filters",
+    "paymentTerms": 15,
+    "status": "Active",
+    "notes": "Bulk discount on brake pads"
+  },
+  {
+    "id": 3,
+    "company": "Castrol Australia",
+    "contact": "Alan Foster",
+    "email": "alan@castrol.com.au",
+    "phone": "0490 333 444",
+    "address": "200 Industrial Park, Macquarie Park NSW 2113",
+    "abn": "88 999 000 111",
+    "category": "Fluids & Oils",
+    "paymentTerms": 30,
+    "status": "Active",
+    "notes": ""
+  },
+  {
+    "id": 4,
+    "company": "AutoElec Supplies",
+    "contact": "Karen White",
+    "email": "karen@autoelec.com.au",
+    "phone": "0401 444 555",
+    "address": "42 Motorway Dr, Botany NSW 2019",
+    "abn": "99 000 111 222",
+    "category": "Electrical",
+    "paymentTerms": 30,
+    "status": "Active",
+    "notes": "Batteries and alternators"
+  }
+]

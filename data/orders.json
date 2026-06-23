@@ -1,0 +1,203 @@
+[
+  {
+    "id": 1,
+    "type": "Sales",
+    "orderNum": "SO-0001",
+    "date": "2026-05-09",
+    "customerId": 1,
+    "items": [
+      {
+        "inventoryId": 1,
+        "qty": 1,
+        "price": 18,
+        "discount": 0
+      },
+      {
+        "inventoryId": 3,
+        "qty": 1,
+        "price": 54.99,
+        "discount": 0
+      },
+      {
+        "inventoryId": 5,
+        "qty": 4,
+        "price": 12,
+        "discount": 0
+      }
+    ],
+    "status": "Fulfilled",
+    "paymentStatus": "Paid",
+    "notes": "Full service — 2022 Toyota Camry"
+  },
+  {
+    "id": 2,
+    "type": "Sales",
+    "orderNum": "SO-0002",
+    "date": "2026-05-24",
+    "customerId": 2,
+    "items": [
+      {
+        "inventoryId": 2,
+        "qty": 2,
+        "price": 89,
+        "discount": 5
+      },
+      {
+        "inventoryId": 6,
+        "qty": 2,
+        "price": 110,
+        "discount": 0
+      }
+    ],
+    "status": "Fulfilled",
+    "paymentStatus": "Paid",
+    "notes": "Front brake replacement — fleet vehicle 1"
+  },
+  {
+    "id": 3,
+    "type": "Sales",
+    "orderNum": "SO-0003",
+    "date": "2026-06-08",
+    "customerId": 3,
+    "items": [
+      {
+        "inventoryId": 7,
+        "qty": 1,
+        "price": 189,
+        "discount": 0
+      },
+      {
+        "inventoryId": 4,
+        "qty": 1,
+        "price": 24,
+        "discount": 0
+      }
+    ],
+    "status": "Processing",
+    "paymentStatus": "Unpaid",
+    "notes": "Battery replacement + air filter — Ford Ranger"
+  },
+  {
+    "id": 4,
+    "type": "Sales",
+    "orderNum": "SO-0004",
+    "date": "2026-06-16",
+    "customerId": 4,
+    "items": [
+      {
+        "inventoryId": 1,
+        "qty": 3,
+        "price": 18,
+        "discount": 10
+      },
+      {
+        "inventoryId": 3,
+        "qty": 3,
+        "price": 54.99,
+        "discount": 0
+      },
+      {
+        "inventoryId": 8,
+        "qty": 2,
+        "price": 14.99,
+        "discount": 0
+      }
+    ],
+    "status": "Pending",
+    "paymentStatus": "Unpaid",
+    "notes": "Bulk service — 3 courier vehicles"
+  },
+  {
+    "id": 5,
+    "type": "Sales",
+    "orderNum": "SO-0005",
+    "date": "2026-06-20",
+    "customerId": 2,
+    "items": [
+      {
+        "inventoryId": 6,
+        "qty": 4,
+        "price": 110,
+        "discount": 0
+      }
+    ],
+    "status": "Draft",
+    "paymentStatus": "Unpaid",
+    "notes": "Awaiting rotor stock"
+  },
+  {
+    "id": 6,
+    "type": "Purchase",
+    "orderNum": "PO-0001",
+    "date": "2026-06-03",
+    "expectedDate": "2026-06-10",
+    "supplierId": 1,
+    "items": [
+      {
+        "inventoryId": 1,
+        "qty": 50,
+        "price": 6.5,
+        "discount": 0
+      },
+      {
+        "inventoryId": 5,
+        "qty": 100,
+        "price": 4.5,
+        "discount": 0
+      }
+    ],
+    "status": "Received",
+    "paymentStatus": "Paid",
+    "notes": "Monthly restock — filters & spark plugs"
+  },
+  {
+    "id": 7,
+    "type": "Purchase",
+    "orderNum": "PO-0002",
+    "date": "2026-06-18",
+    "expectedDate": "2026-06-25",
+    "supplierId": 2,
+    "items": [
+      {
+        "inventoryId": 6,
+        "qty": 10,
+        "price": 45,
+        "discount": 0
+      },
+      {
+        "inventoryId": 2,
+        "qty": 20,
+        "price": 35,
+        "discount": 0
+      }
+    ],
+    "status": "Ordered",
+    "paymentStatus": "Unpaid",
+    "notes": "Restock brake parts — rotors out of stock"
+  },
+  {
+    "id": 8,
+    "type": "Purchase",
+    "orderNum": "PO-0003",
+    "date": "2026-06-21",
+    "expectedDate": "2026-06-28",
+    "supplierId": 3,
+    "items": [
+      {
+        "inventoryId": 3,
+        "qty": 30,
+        "price": 22,
+        "discount": 0
+      },
+      {
+        "inventoryId": 8,
+        "qty": 50,
+        "price": 5,
+        "discount": 0
+      }
+    ],
+    "status": "Ordered",
+    "paymentStatus": "Unpaid",
+    "notes": "Engine oil & coolant restock"
+  }
+]

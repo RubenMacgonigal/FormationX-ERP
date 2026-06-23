@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "firstName": "James",
+    "lastName": "Mitchell",
+    "email": "james.m@outlook.com",
+    "phone": "0412 345 678",
+    "company": "",
+    "abn": "",
+    "billingAddress": "45 Pitt St, Sydney NSW 2000",
+    "shippingAddress": "45 Pitt St, Sydney NSW 2000",
+    "status": "Active",
+    "notes": "File sync test 1782204299158",
+    "created": "2026-01-15"
+  },
+  {
+    "id": 2,
+    "firstName": "Sarah",
+    "lastName": "Chen",
+    "email": "sarah.chen@gmail.com",
+    "phone": "0423 456 789",
+    "company": "Chen Transport",
+    "abn": "22 333 444 555",
+    "billingAddress": "12 Harbour Dr, Melbourne VIC 3000",
+    "shippingAddress": "12 Harbour Dr, Melbourne VIC 3000",
+    "status": "Active",
+    "notes": "Fleet customer — 5 vehicles",
+    "created": "2026-02-03"
+  },
+  {
+    "id": 3,
+    "firstName": "David",
+    "lastName": "Thompson",
+    "email": "d.thompson@corp.com",
+    "phone": "0434 567 890",
+    "company": "",
+    "abn": "",
+    "billingAddress": "78 Queen St, Brisbane QLD 4000",
+    "shippingAddress": "78 Queen St, Brisbane QLD 4000",
+    "status": "Active",
+    "notes": "Vehicle: 2019 Ford Ranger",
+    "created": "2026-02-20"
+  },
+  {
+    "id": 4,
+    "firstName": "Emma",
+    "lastName": "Williams",
+    "email": "emma.w@business.com",
+    "phone": "0445 678 901",
+    "company": "Williams Couriers",
+    "abn": "44 555 666 777",
+    "billingAddress": "23 King St, Perth WA 6000",
+    "shippingAddress": "23 King St, Perth WA 6000",
+    "status": "Active",
+    "notes": "Vehicle: 2021 Hyundai Tucson",
+    "created": "2026-03-10"
+  },
+  {
+    "id": 5,
+    "firstName": "Michael",
+    "lastName": "Brown",
+    "email": "mbrown@email.com",
+    "phone": "0456 789 012",
+    "company": "",
+    "abn": "",
+    "billingAddress": "56 Flinders Ln, Adelaide SA 5000",
+    "shippingAddress": "56 Flinders Ln, Adelaide SA 5000",
+    "status": "Inactive",
+    "notes": "Account on hold — disputed invoice",
+    "created": "2026-01-08"
+  }
+]

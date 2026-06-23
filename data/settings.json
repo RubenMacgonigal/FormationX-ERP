@@ -1,0 +1,15 @@
+{
+  "companyName": "FormationX Auto",
+  "abn": "12 345 678 901",
+  "email": "service@formationxauto.com.au",
+  "phone": "(02) 9876 5432",
+  "address": "38 Parramatta Rd, Homebush NSW 2140",
+  "taxRate": 10,
+  "invoicePrefix": "INV",
+  "nextInvoiceNum": 1005,
+  "paymentTerms": 14,
+  "emailjsPublicKey": "",
+  "emailjsServiceId": "",
+  "emailjsTemplateId": "",
+  "smsApiKey": "textbelt"
+}

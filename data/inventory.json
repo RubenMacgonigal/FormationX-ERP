@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "sku": "FX-1001",
+    "name": "Oil Filter (Standard)",
+    "category": "Filters",
+    "supplierId": 1,
+    "costPrice": 6.5,
+    "unitPrice": 18,
+    "quantity": 119,
+    "reorderLevel": 20,
+    "status": "In Stock"
+  },
+  {
+    "id": 2,
+    "sku": "FX-1002",
+    "name": "Brake Pad Set (Front)",
+    "category": "Brakes",
+    "supplierId": 2,
+    "costPrice": 35,
+    "unitPrice": 89,
+    "quantity": 38,
+    "reorderLevel": 10,
+    "status": "In Stock"
+  },
+  {
+    "id": 3,
+    "sku": "FX-1003",
+    "name": "Engine Oil 5W-30 (5L)",
+    "category": "Fluids & Oils",
+    "supplierId": 3,
+    "costPrice": 22,
+    "unitPrice": 54.99,
+    "quantity": 7,
+    "reorderLevel": 15,
+    "status": "Low Stock"
+  },
+  {
+    "id": 4,
+    "sku": "FX-1004",
+    "name": "Air Filter",
+    "category": "Filters",
+    "supplierId": 1,
+    "costPrice": 8,
+    "unitPrice": 24,
+    "quantity": 65,
+    "reorderLevel": 15,
+    "status": "In Stock"
+  },
+  {
+    "id": 5,
+    "sku": "FX-1005",
+    "name": "Spark Plug (Single)",
+    "category": "Engine Parts",
+    "supplierId": 1,
+    "costPrice": 4.5,
+    "unitPrice": 12,
+    "quantity": 196,
+    "reorderLevel": 40,
+    "status": "In Stock"
+  },
+  {
+    "id": 6,
+    "sku": "FX-1006",
+    "name": "Brake Disc Rotor (Front)",
+    "category": "Brakes",
+    "supplierId": 2,
+    "costPrice": 45,
+    "unitPrice": 110,
+    "quantity": 0,
+    "reorderLevel": 5,
+    "status": "Out of Stock"
+  },
+  {
+    "id": 7,
+    "sku": "FX-1007",
+    "name": "Car Battery 12V",
+    "category": "Electrical",
+    "supplierId": 4,
+    "costPrice": 85,
+    "unitPrice": 189,
+    "quantity": 14,
+    "reorderLevel": 5,
+    "status": "In Stock"
+  },
+  {
+    "id": 8,
+    "sku": "FX-1008",
+    "name": "Coolant (1L)",
+    "category": "Fluids & Oils",
+    "supplierId": 3,
+    "costPrice": 5,
+    "unitPrice": 14.99,
+    "quantity": 90,
+    "reorderLevel": 20,
+    "status": "In Stock"
+  }
+]
