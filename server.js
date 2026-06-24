@@ -208,7 +208,7 @@ http.createServer(async (req, res) => {
 
         // ---- USERS MANAGEMENT ----
         if (urlPath === '/api/users' && req.method === 'GET') {
-            const users = loadUsers().map(u => ({ id: u.id, email: u.email, name: u.name, role: u.role }));
+            const users = loadUsers().map(u => ({ id: u.id, email: u.email, name: u.name, role: u.role, position: u.position || '', phone: u.phone || '' }));
             res.writeHead(200, addCors({ 'Content-Type': 'application/json' }));
             res.end(JSON.stringify(users));
             return;
@@ -216,19 +216,21 @@ http.createServer(async (req, res) => {
 
         if (urlPath === '/api/users' && req.method === 'POST') {
             try {
-                const { email, name, role, password } = await readBody(req);
+                const { email, name, role, password, position, phone } = await readBody(req);
                 if (!email || !name || !password) { sendError(res, 'Email, name, and password are required', 400); return; }
                 const users = loadUsers();
                 if (users.find(u => u.email === email)) { sendError(res, 'A user with this email already exists', 409); return; }
                 const newUser = {
                     id: users.length ? Math.max(...users.map(u => u.id)) + 1 : 1,
                     email, name, role: role || 'Staff',
+                    position: position || '',
+                    phone: phone || '',
                     passwordHash: hashPassword(password)
                 };
                 users.push(newUser);
                 saveUsers(users);
                 res.writeHead(201, addCors({ 'Content-Type': 'application/json' }));
-                res.end(JSON.stringify({ ok: true, user: { id: newUser.id, email: newUser.email, name: newUser.name, role: newUser.role } }));
+                res.end(JSON.stringify({ ok: true, user: { id: newUser.id, email: newUser.email, name: newUser.name, role: newUser.role, position: newUser.position, phone: newUser.phone } }));
             } catch (e) { sendError(res, e.message, 400); }
             return;
         }

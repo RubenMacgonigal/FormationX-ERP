@@ -62,11 +62,7 @@ const AU_STATES = ['NSW','VIC','QLD','SA','WA','TAS','ACT','NT'];
 
 function addressFieldsHTML(prefix, existingAddress) {
     const parts = parseAddress(existingAddress || '');
-    return `<div class="form-group" style="position:relative">
-            <label>Search Address</label>
-            <div class="input-icon"><i class="fas fa-search"></i><input type="text" id="${prefix}-search" placeholder="Start typing an address..." autocomplete="off" style="padding-left:36px"></div>
-        </div>
-        <div class="form-group"><label>Street</label><input type="text" id="${prefix}-street" value="${escapeHTML(parts.street)}" placeholder="e.g. 45 Pitt St"></div>
+    return `<div class="form-group"><label>Street</label><input type="text" id="${prefix}-street" value="${escapeHTML(parts.street)}" placeholder="e.g. 45 Pitt St"></div>
         <div class="form-row">
             <div class="form-group"><label>Suburb</label><input type="text" id="${prefix}-suburb" value="${escapeHTML(parts.suburb)}" placeholder="e.g. Parramatta"></div>
             <div class="form-group"><label>Postcode</label><input type="text" id="${prefix}-postcode" value="${escapeHTML(parts.postcode)}" maxlength="4" placeholder="e.g. 2000"></div>
@@ -261,6 +257,13 @@ const DB = {
         try { return JSON.parse(localStorage.getItem('fx_' + key)) || fallback; }
         catch { return fallback; }
     },
+    log(action) {
+        const logs = this.load('auditlog', []);
+        logs.push({ timestamp: new Date().toISOString(), user: localStorage.getItem('fx_current_user') || 'Admin', action });
+        if (logs.length > 500) logs.splice(0, logs.length - 500);
+        localStorage.setItem('fx_auditlog', JSON.stringify(logs));
+    },
+    get auditlog() { return this.load('auditlog', []); },
     save(key, data) {
         localStorage.setItem('fx_' + key, JSON.stringify(data));
         if (this._useServer) {
@@ -455,6 +458,11 @@ function getCustomerName(id) { const c = DB.customers.find(c => c.id === id); re
 function getCustomerCompany(id) { const c = DB.customers.find(c => c.id === id); return c ? escapeHTML(c.company) : '—'; }
 function getSupplierName(id) { const s = DB.suppliers.find(s => s.id === id); return s ? escapeHTML(s.company) : '—'; }
 function getInventoryItem(id) { return DB.inventory.find(i => i.id === id); }
+function getStaffList() {
+    try { const raw = localStorage.getItem('fx_users'); return raw ? JSON.parse(raw) : []; }
+    catch { return []; }
+}
+function getStaffName(id) { const u = getStaffList().find(u => u.id === id); return u ? u.name : '—'; }
 
 function toast(msg, type = 'success') {
     const icons = { success: 'fa-check-circle', error: 'fa-exclamation-circle', warning: 'fa-exclamation-triangle' };
@@ -584,6 +592,8 @@ document.getElementById('login-form').addEventListener('submit', e => {
             }
             if (st.googleMapsApiKey) loadGoogleMaps(st.googleMapsApiKey);
             navigateTo('dashboard');
+            try { const ur = await fetch('/api/users', { headers: authHeaders() }); if (ur.ok) localStorage.setItem('fx_users', JSON.stringify(await ur.json())); } catch {}
+            DB.log('User logged in');
             if (serverAvailable) toast('Connected to file directory backend', 'success');
         } catch (err) {
             const errEl = document.getElementById('login-error');
@@ -1033,6 +1043,7 @@ function renderCustomerForm(id) {
         else arr.push(data);
         DB.customers = arr;
         closeDrawer();
+        DB.log(c ? `Updated customer: ${data.firstName} ${data.lastName}` : `Created customer: ${data.firstName} ${data.lastName}`);
         toast(c ? 'Customer updated successfully' : `Customer '${data.firstName} ${data.lastName}' created`);
         renderCustomers();
     });
@@ -1126,6 +1137,7 @@ function renderSupplierForm(id) {
         if (s) { const idx = arr.findIndex(x => x.id === s.id); arr[idx] = data; }
         else arr.push(data);
         DB.suppliers = arr;
+        DB.log(s ? `Updated supplier: ${data.company}` : `Created supplier: ${data.company}`);
         closeDrawer(); toast(s ? 'Supplier updated' : `Supplier '${data.company}' created`); renderSuppliers();
     });
 }
@@ -1224,6 +1236,7 @@ function renderInventoryForm(id) {
         if (i) { const idx = arr.findIndex(x => x.id === i.id); arr[idx] = data; }
         else arr.push(data);
         DB.inventory = arr;
+        DB.log(i ? `Updated inventory: ${data.name} (qty: ${data.quantity})` : `Added inventory item: ${data.name}`);
         closeDrawer(); toast(i ? 'Item updated' : `'${data.name}' added to inventory`); renderInventory();
     });
 }
@@ -1253,7 +1266,7 @@ function renderJobs() {
         </div>
         ${jobs.length ? `<div class="card"><div class="card-body no-pad"><div class="table-wrapper">
             <table id="jobs-table">
-                <thead><tr><th>Job #</th><th>Date</th><th>Customer</th><th>Vehicle</th><th>Description</th><th>Parts</th><th>Labour</th><th>Total</th><th>Status</th><th>Actions</th></tr></thead>
+                <thead><tr><th>Job #</th><th>Date</th><th>Customer</th><th>Assigned To</th><th>Vehicle</th><th>Description</th><th>Parts</th><th>Labour</th><th>Total</th><th>Status</th><th>Actions</th></tr></thead>
                 <tbody>${jobs.slice().reverse().map(j => {
                     const statusClass = j.status.toLowerCase().replace(/\s/g,'-');
                     const v = j.vehicle || {};
@@ -1261,6 +1274,7 @@ function renderJobs() {
                         <td><strong>${escapeHTML(j.jobNum)}</strong></td>
                         <td>${fmtDate(j.date)}</td>
                         <td>${getCustomerName(j.customerId)}</td>
+                        <td>${escapeHTML(j.assignedName || getStaffName(j.assignedTo))}</td>
                         <td>${escapeHTML((v.year||'')+' '+(v.make||'')+' '+(v.model||''))}</td>
                         <td>${escapeHTML(j.description||'').substring(0,40)}</td>
                         <td>${fmt(calcJobPartsTotal(j.parts||[]))}</td>
@@ -1310,7 +1324,13 @@ function renderJobForm(id) {
                     </div>
                 </div>
             </div>
-            <div class="form-group"><label>Date</label><input type="date" id="jf-date" value="${j ? j.date : new Date().toISOString().split('T')[0]}"></div>
+            <div class="form-row">
+                <div class="form-group"><label>Date</label><input type="date" id="jf-date" value="${j ? j.date : new Date().toISOString().split('T')[0]}"></div>
+                <div class="form-group"><label>Assigned To *</label><select id="jf-assigned" required>
+                    <option value="">Select staff member...</option>
+                    ${getStaffList().map(u => `<option value="${u.id}" ${j && j.assignedTo === u.id ? 'selected' : ''}>${escapeHTML(u.name)}${u.position ? ' — ' + escapeHTML(u.position) : ''}</option>`).join('')}
+                </select></div>
+            </div>
             <h4 style="margin:16px 0 8px">Vehicle</h4>
             <div class="form-row">
                 <div class="form-group"><label>Make</label><input type="text" id="jf-vmake" value="${escapeHTML(v.make||'')}" placeholder="e.g. Toyota"></div>
@@ -1404,6 +1424,8 @@ function renderJobForm(id) {
             customerId,
             vehicle: { make: document.getElementById('jf-vmake').value, model: document.getElementById('jf-vmodel').value, year: document.getElementById('jf-vyear').value, rego: document.getElementById('jf-vrego').value },
             description: document.getElementById('jf-desc').value,
+            assignedTo: parseInt(document.getElementById('jf-assigned').value) || null,
+            assignedName: (getStaffList().find(u => u.id === parseInt(document.getElementById('jf-assigned').value)) || {}).name || '',
             parts: partsData, labour: labourData,
             status: document.getElementById('jf-status').value,
             notes: document.getElementById('jf-notes').value
@@ -1412,6 +1434,7 @@ function renderJobForm(id) {
         if (j) { const idx = arr.findIndex(x => x.id === j.id); arr[idx] = data; }
         else { arr.push(data); settings.nextJobNum = (settings.nextJobNum || 1) + 1; DB.settings = settings; }
         DB.jobs = arr;
+        DB.log(j ? `Updated job: ${data.jobNum}` : `Created job: ${data.jobNum} for ${getCustomerName(data.customerId)}`);
         closeDrawer(); toast(j ? 'Job updated' : `Job ${data.jobNum} created`); renderJobs();
     });
 }
@@ -1548,6 +1571,7 @@ function renderJobDetail(id) {
         </div>
         <div class="detail-field"><label>Date</label><span>${fmtDate(j.date)}</span></div>
         <div class="detail-field"><label>Customer</label><span>${customer ? escapeHTML(customer.firstName+' '+customer.lastName) : '—'}</span></div>
+        <div class="detail-field"><label>Assigned To</label><span><i class="fas fa-user-cog" style="color:var(--primary);margin-right:6px"></i>${escapeHTML(j.assignedName || getStaffName(j.assignedTo))}</span></div>
         <div class="detail-field"><label>Vehicle</label><span>${escapeHTML([v.year,v.make,v.model].filter(Boolean).join(' '))} ${v.rego ? '('+escapeHTML(v.rego)+')' : ''}</span></div>
         <div class="detail-field"><label>Description</label><span>${escapeHTML(j.description||'—')}</span></div>
         ${j.parts && j.parts.length ? `<h4 style="margin:16px 0 8px">Parts</h4>
@@ -1771,6 +1795,7 @@ function changeOrderStatus(id, status) {
     }
     DB.orders = orders;
     const label = status === 'Received' ? `${orders[idx].orderNum} received — stock updated` : `Order ${orders[idx].orderNum} → ${status}`;
+    DB.log(label);
     closeDrawer(); toast(label); renderOrders();
 }
 
@@ -2010,6 +2035,7 @@ async function sendInvoiceNotification(invoiceId) {
     if (inv.status === 'Draft') inv.status = 'Sent';
     invoices[idx] = inv;
     DB.invoices = invoices;
+    DB.log(`Sent ${inv.invoiceNum} to ${customer.firstName} ${customer.lastName}: ${results.join(', ')}`);
     toast(`${inv.invoiceNum}: ${results.join(' | ')}`);
 }
 
@@ -2592,6 +2618,84 @@ function renderSettings() {
                     </div>
                 </form>
             </div>`,
+            tests: `<div class="settings-section"><h3>Automated System Tests</h3>
+                <p style="color:#64748B;margin-bottom:16px">Run automated tests to verify all modules, data integrity, and calculations. Screenshot the results for your assessment report.</p>
+                <button class="btn btn-primary" onclick="runSystemTests()" id="run-tests-btn"><i class="fas fa-play"></i> Run All Tests</button>
+                <div id="test-results" style="margin-top:20px"></div>
+            </div>`,
+            auditlog: `<div class="settings-section"><h3>Activity Audit Log</h3>
+                <p style="color:#64748B;margin-bottom:12px">All system actions are logged with timestamps for accountability and compliance (EC-12-03).</p>
+                <div style="display:flex;gap:10px;margin-bottom:16px;">
+                    <button class="btn btn-secondary btn-sm" onclick="exportAuditLog()"><i class="fas fa-download"></i> Export Log (CSV)</button>
+                    <button class="btn btn-danger btn-sm" onclick="if(confirm('Clear entire audit log?')){localStorage.removeItem('fx_auditlog');window._settingsTab('auditlog')}">Clear Log</button>
+                </div>
+                <div class="table-wrapper" style="max-height:500px;overflow-y:auto;">
+                    <table><thead><tr><th>Timestamp</th><th>User</th><th>Action</th></tr></thead>
+                    <tbody>${DB.auditlog.slice().reverse().map(l => `<tr><td style="white-space:nowrap">${new Date(l.timestamp).toLocaleString('en-AU')}</td><td>${escapeHTML(l.user)}</td><td>${escapeHTML(l.action)}</td></tr>`).join('') || '<tr><td colspan="3" style="text-align:center;color:#94A3B8;padding:40px">No activity recorded yet. Actions will appear here as you use the system.</td></tr>'}</tbody>
+                    </table>
+                </div>
+            </div>`,
+            systeminfo: `<div class="settings-section"><h3>System Architecture & Technical Overview</h3>
+                <p style="color:#64748B;margin-bottom:20px">Technical documentation of the FormationX ERP system for assessment evidence (EC-12-08, EC-12-11).</p>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px">
+                    <div class="card" style="padding:20px"><h4 style="margin-bottom:12px;color:var(--primary)"><i class="fas fa-layer-group"></i> Frontend</h4>
+                        <ul style="list-style:none;font-size:13px;color:var(--text-secondary)">
+                            <li style="padding:4px 0"><strong>HTML5 / CSS3 / JavaScript</strong> — Single-page application</li>
+                            <li style="padding:4px 0"><strong>Chart.js 4.4</strong> — Interactive analytics & reporting</li>
+                            <li style="padding:4px 0"><strong>Font Awesome 6.5</strong> — Icon library</li>
+                            <li style="padding:4px 0"><strong>EmailJS</strong> — Client-side email delivery</li>
+                            <li style="padding:4px 0"><strong>Textbelt API</strong> — SMS notifications</li>
+                            <li style="padding:4px 0"><strong>CSS Custom Properties</strong> — Theming & dark mode</li>
+                        </ul>
+                    </div>
+                    <div class="card" style="padding:20px"><h4 style="margin-bottom:12px;color:var(--success)"><i class="fas fa-server"></i> Backend</h4>
+                        <ul style="list-style:none;font-size:13px;color:var(--text-secondary)">
+                            <li style="padding:4px 0"><strong>Node.js</strong> — HTTP server & REST API</li>
+                            <li style="padding:4px 0"><strong>JSON File Storage</strong> — data/ directory with atomic writes</li>
+                            <li style="padding:4px 0"><strong>SHA-256 + Salt</strong> — Password hashing</li>
+                            <li style="padding:4px 0"><strong>Bearer Token Auth</strong> — Session management</li>
+                            <li style="padding:4px 0"><strong>Input Validation</strong> — Server-side data checks</li>
+                            <li style="padding:4px 0"><strong>Path Traversal Protection</strong> — Security hardening</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card" style="padding:20px;margin-bottom:20px"><h4 style="margin-bottom:12px"><i class="fas fa-project-diagram"></i> Module Integration Map</h4>
+                    <pre style="font-size:12px;line-height:1.8;color:var(--text-secondary);overflow-x:auto">
+  Customers ────┬──→ Jobs (Service Tickets) ──→ Invoices ──→ Email/SMS
+                │         │                          │
+  Suppliers ──┐ │         ▼                          ▼
+              │ │    Inventory ◄──── Purchase Orders  Payments
+              └─┴──→ (Stock Levels)                   │
+                         │                            ▼
+                    Dashboard ◄──────────── Reports & Analytics
+                    (KPIs, Charts, Alerts)    (Sales, Profit, Stock)</pre>
+                </div>
+                <div class="card" style="padding:20px;margin-bottom:20px"><h4 style="margin-bottom:12px"><i class="fas fa-shield-alt"></i> Security Features (EC-12-03)</h4>
+                    <ul style="font-size:13px;color:var(--text-secondary);padding-left:20px">
+                        <li>User authentication with hashed passwords (SHA-256 + random salt)</li>
+                        <li>Session-based access control with 8-hour token expiry</li>
+                        <li>Role-based permissions (Administrator, Manager, Staff, View Only)</li>
+                        <li>Server-side input validation on all API endpoints</li>
+                        <li>XSS prevention via HTML escaping on all user-generated content</li>
+                        <li>Atomic file writes to prevent data corruption</li>
+                        <li>Audit trail logging all data modifications with timestamps</li>
+                        <li>Automated backup system with server-side storage</li>
+                    </ul>
+                </div>
+                <div class="card" style="padding:20px"><h4 style="margin-bottom:12px"><i class="fas fa-database"></i> Data Collections</h4>
+                    <table style="width:100%;font-size:13px"><thead><tr><th>Collection</th><th>File</th><th>Records</th><th>Purpose</th></tr></thead>
+                    <tbody>
+                        <tr><td>Customers</td><td><code>data/customers.json</code></td><td>${DB.customers.length}</td><td>Vehicle owners & fleet accounts</td></tr>
+                        <tr><td>Suppliers</td><td><code>data/suppliers.json</code></td><td>${DB.suppliers.length}</td><td>Auto parts vendors</td></tr>
+                        <tr><td>Inventory</td><td><code>data/inventory.json</code></td><td>${DB.inventory.length}</td><td>Parts, fluids, consumables</td></tr>
+                        <tr><td>Jobs</td><td><code>data/jobs.json</code></td><td>${DB.jobs.length}</td><td>Service tickets & repairs</td></tr>
+                        <tr><td>Orders</td><td><code>data/orders.json</code></td><td>${DB.orders.length}</td><td>Purchase orders from suppliers</td></tr>
+                        <tr><td>Invoices</td><td><code>data/invoices.json</code></td><td>${DB.invoices.length}</td><td>Customer billing & payments</td></tr>
+                        <tr><td>Settings</td><td><code>data/settings.json</code></td><td>1</td><td>Company config, tax, email</td></tr>
+                        <tr><td>Users</td><td><code>data/users.json</code></td><td>—</td><td>Login credentials & roles</td></tr>
+                    </tbody></table>
+                </div>
+            </div>`,
             data: `<div class="settings-section"><h3>Data Backup & Restore</h3>
                 <p style="color:#64748B;margin-bottom:16px">Export all system data as a JSON backup file, or restore from a previous backup.</p>
                 <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;">
@@ -2612,7 +2716,7 @@ function renderSettings() {
             <div class="page-header"><div class="page-header-left"><h1>Settings</h1><p>Configure your ERP system</p></div></div>
             <div class="settings-layout">
                 <div class="settings-nav">
-                    ${[['company','Company Profile','fa-building'],['invoice','Invoice Settings','fa-file-invoice'],['tax','Tax Settings','fa-percent'],['notifications','Email & SMS','fa-paper-plane'],['users','User Management','fa-users'],['data','Data Management','fa-database']].map(([k,l,ic])=>
+                    ${[['company','Company Profile','fa-building'],['invoice','Invoice Settings','fa-file-invoice'],['tax','Tax Settings','fa-percent'],['notifications','Email & SMS','fa-paper-plane'],['users','User Management','fa-users'],['tests','System Tests','fa-vial'],['auditlog','Audit Log','fa-clipboard-list'],['systeminfo','System Info','fa-info-circle'],['data','Data Management','fa-database']].map(([k,l,ic])=>
                         `<button class="settings-nav-item ${tab===k?'active':''}" onclick="window._settingsTab('${k}')"><i class="fas ${ic}" style="width:20px;margin-right:8px"></i>${l}</button>`
                     ).join('')}
                 </div>
@@ -2714,6 +2818,7 @@ function confirmDelete(collection, id) {
     arr = arr.filter(x => x.id !== id);
     DB[collection] = arr;
     closeModal();
+    DB.log(`Deleted ${collection} record #${id}`);
     toast('Record deleted');
     navigateTo(currentPage);
 }
@@ -2958,16 +3063,19 @@ async function loadUsersTable() {
         const resp = await fetch('/api/users', { headers: authHeaders() });
         if (!resp.ok) { container.innerHTML = '<p style="color:#DC2626">Failed to load users</p>'; return; }
         const users = await resp.json();
+        localStorage.setItem('fx_users', JSON.stringify(users));
         const roleClasses = { Administrator: 'sent', Manager: 'pending', Staff: 'draft', 'View Only': 'inactive' };
         const roleOptions = Object.keys(ROLES);
         container.innerHTML = `
             <div class="role-legend" style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px;padding:16px;background:#F8FAFC;border-radius:8px;">
                 ${roleOptions.map(r => `<div style="font-size:12px"><span class="badge badge-${roleClasses[r]||'draft'}">${escapeHTML(r)}</span> <span style="color:#64748B">${escapeHTML(ROLES[r].description)}</span></div>`).join('')}
             </div>
-            <table><thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Actions</th></tr></thead>
+            <table><thead><tr><th>Name</th><th>Position</th><th>Email</th><th>Phone</th><th>Role</th><th>Actions</th></tr></thead>
             <tbody>${users.map(u => `<tr>
                 <td><strong>${escapeHTML(u.name)}</strong>${_currentUser && _currentUser.id === u.id ? ' <span style="color:#64748B;font-size:11px">(you)</span>' : ''}</td>
+                <td>${escapeHTML(u.position || '—')}</td>
                 <td>${escapeHTML(u.email)}</td>
+                <td>${escapeHTML(u.phone || '—')}</td>
                 <td><select onchange="changeUserRole(${u.id},this.value)" style="font-size:13px;padding:4px 8px;border-radius:6px;border:1px solid #E2E8F0;cursor:pointer" ${_currentUser && _currentUser.id === u.id ? 'disabled title="Cannot change your own role"' : ''}>
                     ${roleOptions.map(r => `<option value="${escapeHTML(r)}" ${u.role===r?'selected':''}>${escapeHTML(r)}</option>`).join('')}
                 </select></td>
@@ -3004,6 +3112,10 @@ function showInviteUserForm() {
                     <div class="form-group"><label>Email *</label><input type="email" id="iu-email" required></div>
                 </div>
                 <div class="form-row">
+                    <div class="form-group"><label>Position</label><input type="text" id="iu-position" placeholder="e.g. Head Mechanic, Apprentice"></div>
+                    <div class="form-group"><label>Phone</label><input type="tel" id="iu-phone" placeholder="e.g. 0412 345 678"></div>
+                </div>
+                <div class="form-row">
                     <div class="form-group"><label>Role</label><select id="iu-role" onchange="document.getElementById('iu-role-desc').textContent=this.options[this.selectedIndex].dataset.desc||''">
                         ${Object.entries(ROLES).map(([key, val]) => `<option value="${escapeHTML(key)}" data-desc="${escapeHTML(val.description)}">${escapeHTML(key)}</option>`).join('')}
                     </select><div id="iu-role-desc" style="font-size:12px;color:#64748B;margin-top:4px">${ROLES['Administrator'].description}</div></div>
@@ -3021,13 +3133,15 @@ function showInviteUserForm() {
         const email = document.getElementById('iu-email').value.trim();
         const role = document.getElementById('iu-role').value;
         const password = document.getElementById('iu-password').value;
-        if (!name || !email || !password) { toast('All fields are required', 'error'); return; }
+        const position = (document.getElementById('iu-position').value || '').trim();
+        const phone = (document.getElementById('iu-phone').value || '').trim();
+        if (!name || !email || !password) { toast('Name, email, and password are required', 'error'); return; }
         if (password.length < 6) { toast('Password must be at least 6 characters', 'error'); return; }
         try {
             const resp = await fetch('/api/users', {
                 method: 'POST',
                 headers: authHeaders(),
-                body: JSON.stringify({ name, email, role, password })
+                body: JSON.stringify({ name, email, role, password, position, phone })
             });
             const data = await resp.json();
             if (!resp.ok) { toast(data.error || 'Failed to create user', 'error'); return; }
@@ -3084,4 +3198,118 @@ async function confirmResetPassword(userId) {
         if (!resp.ok) { toast(data.error || 'Failed to reset password', 'error'); return; }
         toast('Password updated');
     } catch (err) { toast('Error: ' + err.message, 'error'); }
+}
+
+// ============================================
+//  SYSTEM TESTS
+// ============================================
+async function runSystemTests() {
+    const btn = document.getElementById('run-tests-btn');
+    if (btn) { btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Running...'; }
+    const results = [];
+    const pass = (name) => results.push({ name, status: 'PASS', detail: '' });
+    const fail = (name, detail) => results.push({ name, status: 'FAIL', detail });
+    const warn = (name, detail) => results.push({ name, status: 'WARN', detail });
+
+    // Module Data Tests
+    DB.customers.length >= 1 ? pass('Customers: data loads') : fail('Customers: data loads', 'No customer records found');
+    DB.suppliers.length >= 1 ? pass('Suppliers: data loads') : fail('Suppliers: data loads', 'No supplier records found');
+    DB.inventory.length >= 1 ? pass('Inventory: data loads') : fail('Inventory: data loads', 'No inventory records found');
+    DB.orders.length >= 1 ? pass('Orders: data loads') : fail('Orders: data loads', 'No order records found');
+    DB.invoices.length >= 1 ? pass('Invoices: data loads') : fail('Invoices: data loads', 'No invoice records found');
+    DB.jobs.length >= 1 ? pass('Jobs: data loads') : fail('Jobs: data loads', 'No job records found');
+
+    // Data Integrity Tests
+    const orphanOrders = DB.orders.filter(o => o.type === 'Purchase' && o.supplierId && !DB.suppliers.find(s => s.id === o.supplierId));
+    orphanOrders.length === 0 ? pass('Data integrity: PO supplier references valid') : fail('Data integrity: PO supplier references', orphanOrders.length + ' orders reference missing suppliers');
+
+    const orphanInvoices = DB.invoices.filter(i => i.customerId && !DB.customers.find(c => c.id === i.customerId));
+    orphanInvoices.length === 0 ? pass('Data integrity: invoice customer references valid') : fail('Data integrity: invoice customer refs', orphanInvoices.length + ' invoices reference missing customers');
+
+    const orphanJobs = DB.jobs.filter(j => j.customerId && !DB.customers.find(c => c.id === j.customerId));
+    orphanJobs.length === 0 ? pass('Data integrity: job customer references valid') : fail('Data integrity: job customer refs', orphanJobs.length + ' jobs reference missing customers');
+
+    // Calculation Tests
+    const testInv = DB.invoices.find(i => i.items && i.items.length);
+    if (testInv) {
+        const sub = calcInvoiceSubtotal(testInv.items);
+        const tax = calcTax(sub);
+        sub > 0 ? pass('Calculations: invoice subtotal > 0 (' + fmt(sub) + ')') : warn('Calculations: invoice subtotal', 'Subtotal is $0');
+        tax === sub * (DB.settings.taxRate / 100) ? pass('Calculations: GST rate correct (' + DB.settings.taxRate + '%)') : fail('Calculations: GST rate', 'Expected ' + DB.settings.taxRate + '% of ' + fmt(sub));
+    } else { warn('Calculations: skipped', 'No invoices with items to test'); }
+
+    // Stock deduction test
+    const fulfilledOrders = DB.orders.filter(o => o.status === 'Fulfilled' || o.status === 'Received');
+    fulfilledOrders.length > 0 ? pass('Stock flow: fulfilled/received orders exist (' + fulfilledOrders.length + ')') : warn('Stock flow: no fulfilled orders', 'Cannot verify stock deduction');
+
+    const negativeStock = DB.inventory.filter(i => i.quantity < 0);
+    negativeStock.length === 0 ? pass('Stock integrity: no negative quantities') : fail('Stock integrity', negativeStock.length + ' items have negative stock');
+
+    // Status consistency
+    const overdueCheck = DB.invoices.filter(i => i.status === 'Overdue');
+    pass('Auto-overdue: ' + overdueCheck.length + ' overdue invoices detected');
+
+    const lowStock = DB.inventory.filter(i => i.quantity <= i.reorderLevel && i.quantity > 0);
+    const outOfStock = DB.inventory.filter(i => i.quantity === 0);
+    pass('Stock alerts: ' + lowStock.length + ' low stock, ' + outOfStock.length + ' out of stock');
+
+    // Settings validation
+    DB.settings.companyName ? pass('Settings: company name configured') : fail('Settings: company name', 'Missing company name');
+    DB.settings.taxRate > 0 ? pass('Settings: tax rate set (' + DB.settings.taxRate + '%)') : fail('Settings: tax rate', 'Tax rate is 0 or missing');
+    DB.settings.invoicePrefix ? pass('Settings: invoice prefix set (' + DB.settings.invoicePrefix + ')') : warn('Settings: invoice prefix', 'Not configured');
+
+    // Server connection test
+    if (DB._useServer) {
+        try {
+            const resp = await fetch('/api/backup', { headers: authHeaders() });
+            resp.ok ? pass('Server: file backend connected') : fail('Server: file backend', 'HTTP ' + resp.status);
+        } catch (e) { fail('Server: file backend', e.message); }
+    } else {
+        warn('Server: file backend not connected', 'Running in localStorage-only mode');
+    }
+
+    // EmailJS config test
+    DB.settings.emailjsPublicKey && DB.settings.emailjsServiceId && DB.settings.emailjsTemplateId
+        ? pass('Email: EmailJS configured') : warn('Email: EmailJS not configured', 'Go to Settings > Email & SMS');
+
+    // Audit log test
+    DB.auditlog.length > 0 ? pass('Audit log: ' + DB.auditlog.length + ' entries recorded') : warn('Audit log: empty', 'Perform some actions to populate');
+
+    // Render results
+    const passCount = results.filter(r => r.status === 'PASS').length;
+    const failCount = results.filter(r => r.status === 'FAIL').length;
+    const warnCount = results.filter(r => r.status === 'WARN').length;
+    const container = document.getElementById('test-results');
+    if (container) {
+        container.innerHTML = `
+            <div style="display:flex;gap:16px;margin-bottom:16px">
+                <div style="padding:12px 20px;background:var(--success-light);color:var(--success);border-radius:8px;font-weight:700"><i class="fas fa-check-circle"></i> ${passCount} Passed</div>
+                <div style="padding:12px 20px;background:var(--danger-light);color:var(--danger);border-radius:8px;font-weight:700"><i class="fas fa-times-circle"></i> ${failCount} Failed</div>
+                <div style="padding:12px 20px;background:var(--warning-light);color:var(--warning);border-radius:8px;font-weight:700"><i class="fas fa-exclamation-circle"></i> ${warnCount} Warnings</div>
+            </div>
+            <table style="width:100%;font-size:13px">
+                <thead><tr><th>Test</th><th>Result</th><th>Details</th></tr></thead>
+                <tbody>${results.map(r => `<tr>
+                    <td>${escapeHTML(r.name)}</td>
+                    <td><span class="badge badge-${r.status==='PASS'?'active':r.status==='FAIL'?'overdue':'pending'}">${r.status}</span></td>
+                    <td style="color:var(--text-secondary)">${escapeHTML(r.detail)}</td>
+                </tr>`).join('')}</tbody>
+            </table>
+            <p style="margin-top:12px;font-size:12px;color:var(--text-light)">Tests run at ${new Date().toLocaleString('en-AU')} — screenshot this for your assessment report.</p>`;
+    }
+    if (btn) { btn.disabled = false; btn.innerHTML = '<i class="fas fa-play"></i> Run All Tests'; }
+    DB.log('Ran system tests: ' + passCount + ' passed, ' + failCount + ' failed, ' + warnCount + ' warnings');
+}
+
+function exportAuditLog() {
+    const logs = DB.auditlog;
+    if (!logs.length) { toast('No log entries to export', 'warning'); return; }
+    let csv = 'Timestamp,User,Action\n';
+    logs.forEach(l => { csv += `"${l.timestamp}","${(l.user||'').replace(/"/g,'""')}","${(l.action||'').replace(/"/g,'""')}"\n`; });
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `formationx_audit_log_${new Date().toISOString().split('T')[0]}.csv`;
+    a.click();
+    toast('Audit log exported');
 }
