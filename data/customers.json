@@ -10,8 +10,8 @@
     "billingAddress": "45 Pitt St, Sydney NSW 2000",
     "shippingAddress": "45 Pitt St, Sydney NSW 2000",
     "status": "Active",
-    "notes": "File sync test 1782204299158",
-    "created": "2026-01-15"
+    "notes": "Vehicle: 2022 Toyota Camry",
+    "created": "2025-09-15"
   },
   {
     "id": 2,
@@ -25,7 +25,7 @@
     "shippingAddress": "12 Harbour Dr, Melbourne VIC 3000",
     "status": "Active",
     "notes": "Fleet customer — 5 vehicles",
-    "created": "2026-02-03"
+    "created": "2025-10-03"
   },
   {
     "id": 3,
@@ -39,7 +39,7 @@
     "shippingAddress": "78 Queen St, Brisbane QLD 4000",
     "status": "Active",
     "notes": "Vehicle: 2019 Ford Ranger",
-    "created": "2026-02-20"
+    "created": "2025-10-20"
   },
   {
     "id": 4,
@@ -52,8 +52,8 @@
     "billingAddress": "23 King St, Perth WA 6000",
     "shippingAddress": "23 King St, Perth WA 6000",
     "status": "Active",
-    "notes": "Vehicle: 2021 Hyundai Tucson",
-    "created": "2026-03-10"
+    "notes": "Fleet — 3 courier vans",
+    "created": "2025-11-10"
   },
   {
     "id": 5,
@@ -67,6 +67,160 @@
     "shippingAddress": "56 Flinders Ln, Adelaide SA 5000",
     "status": "Inactive",
     "notes": "Account on hold — disputed invoice",
-    "created": "2026-01-08"
+    "created": "2025-09-08"
+  },
+  {
+    "id": 6,
+    "firstName": "Olivia",
+    "lastName": "Nguyen",
+    "email": "olivia.n@hotmail.com",
+    "phone": "0467 890 123",
+    "company": "",
+    "abn": "",
+    "billingAddress": "14 George St, Parramatta NSW 2150",
+    "shippingAddress": "14 George St, Parramatta NSW 2150",
+    "status": "Active",
+    "notes": "Vehicle: 2023 Mazda CX-5",
+    "created": "2025-11-22"
+  },
+  {
+    "id": 7,
+    "firstName": "Liam",
+    "lastName": "O'Connor",
+    "email": "liam.oc@gmail.com",
+    "phone": "0478 901 234",
+    "company": "O'Connor Plumbing",
+    "abn": "55 666 777 888",
+    "billingAddress": "9 Bathurst Rd, Orange NSW 2800",
+    "shippingAddress": "9 Bathurst Rd, Orange NSW 2800",
+    "status": "Active",
+    "notes": "Work ute — 2020 Toyota HiLux",
+    "created": "2025-12-05"
+  },
+  {
+    "id": 8,
+    "firstName": "Priya",
+    "lastName": "Sharma",
+    "email": "priya.s@outlook.com",
+    "phone": "0489 012 345",
+    "company": "",
+    "abn": "",
+    "billingAddress": "33 Chapel St, Windsor VIC 3181",
+    "shippingAddress": "33 Chapel St, Windsor VIC 3181",
+    "status": "Active",
+    "notes": "Vehicle: 2021 Kia Sportage",
+    "created": "2026-01-12"
+  },
+  {
+    "id": 9,
+    "firstName": "Daniel",
+    "lastName": "Kim",
+    "email": "dan.kim@corp.com.au",
+    "phone": "0490 123 456",
+    "company": "Kim Auto Detailing",
+    "abn": "66 777 888 999",
+    "billingAddress": "71 Anzac Pde, Kensington NSW 2033",
+    "shippingAddress": "71 Anzac Pde, Kensington NSW 2033",
+    "status": "Active",
+    "notes": "Regular monthly service",
+    "created": "2026-01-28"
+  },
+  {
+    "id": 10,
+    "firstName": "Rachel",
+    "lastName": "Taylor",
+    "email": "rachel.t@icloud.com",
+    "phone": "0401 234 567",
+    "company": "",
+    "abn": "",
+    "billingAddress": "5 Marine Pde, Coolangatta QLD 4225",
+    "shippingAddress": "5 Marine Pde, Coolangatta QLD 4225",
+    "status": "Active",
+    "notes": "Vehicle: 2018 Subaru Outback",
+    "created": "2026-02-14"
+  },
+  {
+    "id": 11,
+    "firstName": "Tom",
+    "lastName": "Russo",
+    "email": "tom.russo@live.com",
+    "phone": "0412 345 999",
+    "company": "Russo Landscaping",
+    "abn": "77 888 999 111",
+    "billingAddress": "120 Victoria Rd, Gladesville NSW 2111",
+    "shippingAddress": "120 Victoria Rd, Gladesville NSW 2111",
+    "status": "Active",
+    "notes": "Fleet — 2 work utes",
+    "created": "2026-02-28"
+  },
+  {
+    "id": 12,
+    "firstName": "Sophie",
+    "lastName": "Anderson",
+    "email": "sophie.a@gmail.com",
+    "phone": "0423 456 111",
+    "company": "",
+    "abn": "",
+    "billingAddress": "88 Darling St, Balmain NSW 2041",
+    "shippingAddress": "88 Darling St, Balmain NSW 2041",
+    "status": "Active",
+    "notes": "Vehicle: 2022 VW Golf",
+    "created": "2026-03-05"
+  },
+  {
+    "id": 13,
+    "firstName": "Chris",
+    "lastName": "Patel",
+    "email": "chris.patel@yahoo.com",
+    "phone": "0434 567 222",
+    "company": "",
+    "abn": "",
+    "billingAddress": "22 High St, Penrith NSW 2750",
+    "shippingAddress": "22 High St, Penrith NSW 2750",
+    "status": "Active",
+    "notes": "Vehicle: 2017 Nissan Navara",
+    "created": "2026-03-18"
+  },
+  {
+    "id": 14,
+    "firstName": "Amy",
+    "lastName": "Walker",
+    "email": "amy.walker@business.com",
+    "phone": "0445 678 333",
+    "company": "Walker & Co Real Estate",
+    "abn": "88 999 000 222",
+    "billingAddress": "4 Market St, Sydney NSW 2000",
+    "shippingAddress": "4 Market St, Sydney NSW 2000",
+    "status": "Active",
+    "notes": "Vehicle: 2023 Mercedes C200",
+    "created": "2026-04-01"
+  },
+  {
+    "id": 15,
+    "firstName": "Ben",
+    "lastName": "Hughes",
+    "email": "ben.h@outlook.com",
+    "phone": "0456 789 444",
+    "company": "",
+    "abn": "",
+    "billingAddress": "61 Crown St, Wollongong NSW 2500",
+    "shippingAddress": "61 Crown St, Wollongong NSW 2500",
+    "status": "Active",
+    "notes": "Vehicle: 2020 Mitsubishi Triton",
+    "created": "2026-04-15"
+  },
+  {
+    "id": 16,
+    "firstName": "Grace",
+    "lastName": "Lee",
+    "email": "grace.lee@gmail.com",
+    "phone": "0467 890 555",
+    "company": "",
+    "abn": "",
+    "billingAddress": "19 Oxford St, Paddington NSW 2021",
+    "shippingAddress": "19 Oxford St, Paddington NSW 2021",
+    "status": "Inactive",
+    "notes": "Moved interstate",
+    "created": "2025-08-20"
   }
 ]

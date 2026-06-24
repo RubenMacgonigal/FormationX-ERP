@@ -1,136 +1,10 @@
 [
   {
     "id": 1,
-    "type": "Sales",
-    "orderNum": "SO-0001",
-    "date": "2026-05-09",
-    "customerId": 1,
-    "items": [
-      {
-        "inventoryId": 1,
-        "qty": 1,
-        "price": 18,
-        "discount": 0
-      },
-      {
-        "inventoryId": 3,
-        "qty": 1,
-        "price": 54.99,
-        "discount": 0
-      },
-      {
-        "inventoryId": 5,
-        "qty": 4,
-        "price": 12,
-        "discount": 0
-      }
-    ],
-    "status": "Fulfilled",
-    "paymentStatus": "Paid",
-    "notes": "Full service — 2022 Toyota Camry"
-  },
-  {
-    "id": 2,
-    "type": "Sales",
-    "orderNum": "SO-0002",
-    "date": "2026-05-24",
-    "customerId": 2,
-    "items": [
-      {
-        "inventoryId": 2,
-        "qty": 2,
-        "price": 89,
-        "discount": 5
-      },
-      {
-        "inventoryId": 6,
-        "qty": 2,
-        "price": 110,
-        "discount": 0
-      }
-    ],
-    "status": "Fulfilled",
-    "paymentStatus": "Paid",
-    "notes": "Front brake replacement — fleet vehicle 1"
-  },
-  {
-    "id": 3,
-    "type": "Sales",
-    "orderNum": "SO-0003",
-    "date": "2026-06-08",
-    "customerId": 3,
-    "items": [
-      {
-        "inventoryId": 7,
-        "qty": 1,
-        "price": 189,
-        "discount": 0
-      },
-      {
-        "inventoryId": 4,
-        "qty": 1,
-        "price": 24,
-        "discount": 0
-      }
-    ],
-    "status": "Processing",
-    "paymentStatus": "Unpaid",
-    "notes": "Battery replacement + air filter — Ford Ranger"
-  },
-  {
-    "id": 4,
-    "type": "Sales",
-    "orderNum": "SO-0004",
-    "date": "2026-06-16",
-    "customerId": 4,
-    "items": [
-      {
-        "inventoryId": 1,
-        "qty": 3,
-        "price": 18,
-        "discount": 10
-      },
-      {
-        "inventoryId": 3,
-        "qty": 3,
-        "price": 54.99,
-        "discount": 0
-      },
-      {
-        "inventoryId": 8,
-        "qty": 2,
-        "price": 14.99,
-        "discount": 0
-      }
-    ],
-    "status": "Pending",
-    "paymentStatus": "Unpaid",
-    "notes": "Bulk service — 3 courier vehicles"
-  },
-  {
-    "id": 5,
-    "type": "Sales",
-    "orderNum": "SO-0005",
-    "date": "2026-06-20",
-    "customerId": 2,
-    "items": [
-      {
-        "inventoryId": 6,
-        "qty": 4,
-        "price": 110,
-        "discount": 0
-      }
-    ],
-    "status": "Draft",
-    "paymentStatus": "Unpaid",
-    "notes": "Awaiting rotor stock"
-  },
-  {
-    "id": 6,
     "type": "Purchase",
     "orderNum": "PO-0001",
-    "date": "2026-06-03",
-    "expectedDate": "2026-06-10",
+    "date": "2026-03-25",
+    "expectedDate": "2026-04-01",
     "supplierId": 1,
     "items": [
       {
@@ -151,11 +25,211 @@
     "notes": "Monthly restock — filters & spark plugs"
   },
   {
-    "id": 7,
+    "id": 2,
     "type": "Purchase",
     "orderNum": "PO-0002",
-    "date": "2026-06-18",
-    "expectedDate": "2026-06-25",
+    "date": "2026-04-10",
+    "expectedDate": "2026-04-17",
+    "supplierId": 2,
+    "items": [
+      {
+        "inventoryId": 2,
+        "qty": 30,
+        "price": 35,
+        "discount": 0
+      },
+      {
+        "inventoryId": 10,
+        "qty": 20,
+        "price": 30,
+        "discount": 0
+      }
+    ],
+    "status": "Received",
+    "paymentStatus": "Paid",
+    "notes": "Brake pads restock"
+  },
+  {
+    "id": 3,
+    "type": "Purchase",
+    "orderNum": "PO-0003",
+    "date": "2026-04-25",
+    "expectedDate": "2026-05-02",
+    "supplierId": 3,
+    "items": [
+      {
+        "inventoryId": 3,
+        "qty": 40,
+        "price": 22,
+        "discount": 0
+      },
+      {
+        "inventoryId": 8,
+        "qty": 60,
+        "price": 5,
+        "discount": 0
+      },
+      {
+        "inventoryId": 11,
+        "qty": 30,
+        "price": 12,
+        "discount": 0
+      }
+    ],
+    "status": "Received",
+    "paymentStatus": "Paid",
+    "notes": "Fluids restock"
+  },
+  {
+    "id": 4,
+    "type": "Purchase",
+    "orderNum": "PO-0004",
+    "date": "2026-05-10",
+    "expectedDate": "2026-05-17",
+    "supplierId": 4,
+    "items": [
+      {
+        "inventoryId": 7,
+        "qty": 10,
+        "price": 85,
+        "discount": 0
+      },
+      {
+        "inventoryId": 13,
+        "qty": 5,
+        "price": 120,
+        "discount": 0
+      }
+    ],
+    "status": "Received",
+    "paymentStatus": "Paid",
+    "notes": "Electrical parts"
+  },
+  {
+    "id": 5,
+    "type": "Purchase",
+    "orderNum": "PO-0005",
+    "date": "2026-05-25",
+    "expectedDate": "2026-06-01",
+    "supplierId": 12,
+    "items": [
+      {
+        "inventoryId": 12,
+        "qty": 40,
+        "price": 10,
+        "discount": 0
+      },
+      {
+        "inventoryId": 16,
+        "qty": 25,
+        "price": 12,
+        "discount": 0
+      }
+    ],
+    "status": "Received",
+    "paymentStatus": "Paid",
+    "notes": "Filters restock — Ryco"
+  },
+  {
+    "id": 6,
+    "type": "Purchase",
+    "orderNum": "PO-0006",
+    "date": "2026-06-04",
+    "expectedDate": "2026-06-11",
+    "supplierId": 5,
+    "items": [
+      {
+        "inventoryId": 17,
+        "qty": 12,
+        "price": 75,
+        "discount": 0
+      }
+    ],
+    "status": "Received",
+    "paymentStatus": "Paid",
+    "notes": "Tyres — 205/55R16"
+  },
+  {
+    "id": 7,
+    "type": "Purchase",
+    "orderNum": "PO-0007",
+    "date": "2026-06-09",
+    "expectedDate": "2026-06-16",
+    "supplierId": 6,
+    "items": [
+      {
+        "inventoryId": 9,
+        "qty": 8,
+        "price": 65,
+        "discount": 0
+      },
+      {
+        "inventoryId": 14,
+        "qty": 50,
+        "price": 8,
+        "discount": 0
+      }
+    ],
+    "status": "Received",
+    "paymentStatus": "Paid",
+    "notes": "Timing belts + wipers"
+  },
+  {
+    "id": 8,
+    "type": "Purchase",
+    "orderNum": "PO-0008",
+    "date": "2026-06-14",
+    "expectedDate": "2026-06-21",
+    "supplierId": 15,
+    "items": [
+      {
+        "inventoryId": 15,
+        "qty": 60,
+        "price": 6,
+        "discount": 0
+      }
+    ],
+    "status": "Received",
+    "paymentStatus": "Paid",
+    "notes": "Headlight globes H7"
+  },
+  {
+    "id": 9,
+    "type": "Purchase",
+    "orderNum": "PO-0009",
+    "date": "2026-06-16",
+    "expectedDate": "2026-06-23",
+    "supplierId": 1,
+    "items": [
+      {
+        "inventoryId": 1,
+        "qty": 50,
+        "price": 6.5,
+        "discount": 0
+      },
+      {
+        "inventoryId": 4,
+        "qty": 30,
+        "price": 8,
+        "discount": 0
+      },
+      {
+        "inventoryId": 5,
+        "qty": 80,
+        "price": 4.5,
+        "discount": 0
+      }
+    ],
+    "status": "Received",
+    "paymentStatus": "Paid",
+    "notes": "Monthly restock"
+  },
+  {
+    "id": 10,
+    "type": "Purchase",
+    "orderNum": "PO-0010",
+    "date": "2026-06-19",
+    "expectedDate": "2026-06-26",
     "supplierId": 2,
     "items": [
       {
@@ -173,12 +247,12 @@
     ],
     "status": "Ordered",
     "paymentStatus": "Unpaid",
-    "notes": "Restock brake parts — rotors out of stock"
+    "notes": "Restock brake rotors — out of stock"
   },
   {
-    "id": 8,
+    "id": 11,
     "type": "Purchase",
-    "orderNum": "PO-0003",
+    "orderNum": "PO-0011",
     "date": "2026-06-21",
     "expectedDate": "2026-06-28",
     "supplierId": 3,
@@ -191,13 +265,95 @@
       },
       {
         "inventoryId": 8,
-        "qty": 50,
+        "qty": 40,
         "price": 5,
         "discount": 0
       }
     ],
     "status": "Ordered",
     "paymentStatus": "Unpaid",
-    "notes": "Engine oil & coolant restock"
+    "notes": "Engine oil low — urgent"
+  },
+  {
+    "id": 12,
+    "type": "Purchase",
+    "orderNum": "PO-0012",
+    "date": "2026-06-22",
+    "expectedDate": "2026-06-29",
+    "supplierId": 7,
+    "items": [
+      {
+        "inventoryId": 11,
+        "qty": 20,
+        "price": 12,
+        "discount": 0
+      },
+      {
+        "inventoryId": 18,
+        "qty": 15,
+        "price": 7,
+        "discount": 0
+      }
+    ],
+    "status": "Ordered",
+    "paymentStatus": "Unpaid",
+    "notes": "Transmission + power steering fluid"
+  },
+  {
+    "id": 13,
+    "type": "Purchase",
+    "orderNum": "PO-0013",
+    "date": "2026-06-23",
+    "expectedDate": "2026-06-30",
+    "supplierId": 5,
+    "items": [
+      {
+        "inventoryId": 17,
+        "qty": 16,
+        "price": 75,
+        "discount": 0
+      }
+    ],
+    "status": "Draft",
+    "paymentStatus": "Unpaid",
+    "notes": "Tyres — need quote confirmation"
+  },
+  {
+    "id": 14,
+    "type": "Purchase",
+    "orderNum": "PO-0014",
+    "date": "2026-06-23",
+    "expectedDate": "2026-07-02",
+    "supplierId": 8,
+    "items": [
+      {
+        "inventoryId": 13,
+        "qty": 4,
+        "price": 120,
+        "discount": 0
+      }
+    ],
+    "status": "Draft",
+    "paymentStatus": "Unpaid",
+    "notes": "Alternators low"
+  },
+  {
+    "id": 15,
+    "type": "Purchase",
+    "orderNum": "PO-0015",
+    "date": "2026-06-24",
+    "expectedDate": "2026-07-01",
+    "supplierId": 9,
+    "items": [
+      {
+        "inventoryId": 10,
+        "qty": 15,
+        "price": 30,
+        "discount": 0
+      }
+    ],
+    "status": "Draft",
+    "paymentStatus": "Unpaid",
+    "notes": "Rear brake pads"
   }
 ]

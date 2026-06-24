@@ -2,10 +2,10 @@
   {
     "id": 1,
     "invoiceNum": "INV-1001",
-    "orderId": 1,
+    "jobId": 1,
     "customerId": 1,
-    "date": "2026-05-10",
-    "dueDate": "2026-05-24",
+    "date": "2026-03-31",
+    "dueDate": "2026-04-15",
     "items": [
       {
         "description": "Oil Filter (Standard)",
@@ -24,7 +24,8 @@
       },
       {
         "description": "Labour — Full Service",
-        "qty": 1,
+        "hours": 1.5,
+        "qty": 1.5,
         "rate": 150
       }
     ],
@@ -32,7 +33,7 @@
     "amountPaid": 294.29,
     "payments": [
       {
-        "date": "2026-05-14",
+        "date": "2026-04-05",
         "amount": 294.29,
         "method": "Card",
         "ref": "EFTPOS-1201"
@@ -43,27 +44,22 @@
       {
         "type": "email",
         "to": "james.m@outlook.com",
-        "date": "2026-05-10"
-      },
-      {
-        "type": "sms",
-        "to": "0412 345 678",
-        "date": "2026-05-10"
+        "date": "2026-03-31"
       }
     ]
   },
   {
     "id": 2,
     "invoiceNum": "INV-1002",
-    "orderId": 2,
+    "jobId": 2,
     "customerId": 2,
-    "date": "2026-05-25",
-    "dueDate": "2026-06-08",
+    "date": "2026-04-08",
+    "dueDate": "2026-04-22",
     "items": [
       {
         "description": "Brake Pad Set (Front)",
         "qty": 2,
-        "rate": 84.55
+        "rate": 89
       },
       {
         "description": "Brake Disc Rotor (Front)",
@@ -72,16 +68,16 @@
       },
       {
         "description": "Labour — Brake Replacement",
-        "qty": 1,
+        "qty": 2,
         "rate": 220
       }
     ],
     "status": "Paid",
-    "amountPaid": 678.81,
+    "amountPaid": 838.2,
     "payments": [
       {
-        "date": "2026-06-03",
-        "amount": 678.81,
+        "date": "2026-04-15",
+        "amount": 838.2,
         "method": "Bank Transfer",
         "ref": "TXN-88201"
       }
@@ -91,17 +87,108 @@
       {
         "type": "email",
         "to": "sarah.chen@gmail.com",
-        "date": "2026-05-25"
+        "date": "2026-04-08"
       }
     ]
   },
   {
     "id": 3,
     "invoiceNum": "INV-1003",
-    "orderId": 3,
+    "jobId": 3,
+    "customerId": 6,
+    "date": "2026-04-21",
+    "dueDate": "2026-05-05",
+    "items": [
+      {
+        "description": "Oil Filter (Standard)",
+        "qty": 1,
+        "rate": 18
+      },
+      {
+        "description": "Engine Oil 5W-30 (5L)",
+        "qty": 1,
+        "rate": 54.99
+      },
+      {
+        "description": "Cabin Filter",
+        "qty": 1,
+        "rate": 28
+      },
+      {
+        "description": "Labour — Oil Change",
+        "qty": 0.5,
+        "rate": 60
+      }
+    ],
+    "status": "Paid",
+    "amountPaid": 141.09,
+    "payments": [
+      {
+        "date": "2026-04-25",
+        "amount": 141.09,
+        "method": "Card",
+        "ref": "EFTPOS-1305"
+      }
+    ],
+    "notes": "",
+    "sentLog": [
+      {
+        "type": "email",
+        "to": "olivia.n@hotmail.com",
+        "date": "2026-04-21"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "invoiceNum": "INV-1004",
+    "jobId": 4,
+    "customerId": 7,
+    "date": "2026-05-01",
+    "dueDate": "2026-05-15",
+    "items": [
+      {
+        "description": "Timing Belt Kit",
+        "qty": 1,
+        "rate": 149
+      },
+      {
+        "description": "Coolant (1L)",
+        "qty": 2,
+        "rate": 14.99
+      },
+      {
+        "description": "Labour — Timing Belt Replacement",
+        "qty": 3,
+        "rate": 150
+      }
+    ],
+    "status": "Paid",
+    "amountPaid": 646.78,
+    "payments": [
+      {
+        "date": "2026-05-10",
+        "amount": 646.78,
+        "method": "Bank Transfer",
+        "ref": "TXN-90100"
+      }
+    ],
+    "notes": "",
+    "sentLog": [
+      {
+        "type": "email",
+        "to": "liam.oc@gmail.com",
+        "date": "2026-05-01"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "invoiceNum": "INV-1005",
+    "jobId": 5,
     "customerId": 3,
-    "date": "2026-06-09",
-    "dueDate": "2026-06-25",
+    "date": "2026-05-08",
+    "dueDate": "2026-05-22",
     "items": [
       {
         "description": "Car Battery 12V",
@@ -119,6 +206,284 @@
         "rate": 85
       }
     ],
+    "status": "Paid",
+    "amountPaid": 327.8,
+    "payments": [
+      {
+        "date": "2026-05-15",
+        "amount": 327.8,
+        "method": "Cash",
+        "ref": "CASH-0501"
+      }
+    ],
+    "notes": "",
+    "sentLog": [
+      {
+        "type": "email",
+        "to": "d.thompson@corp.com",
+        "date": "2026-05-08"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "invoiceNum": "INV-1006",
+    "jobId": 6,
+    "customerId": 8,
+    "date": "2026-05-16",
+    "dueDate": "2026-05-30",
+    "items": [
+      {
+        "description": "Oil Filter (Standard)",
+        "qty": 1,
+        "rate": 18
+      },
+      {
+        "description": "Engine Oil 5W-30 (5L)",
+        "qty": 1,
+        "rate": 54.99
+      },
+      {
+        "description": "Spark Plug (Single)",
+        "qty": 4,
+        "rate": 12
+      },
+      {
+        "description": "Air Filter",
+        "qty": 1,
+        "rate": 24
+      },
+      {
+        "description": "Labour — Full Service",
+        "qty": 1.5,
+        "rate": 150
+      },
+      {
+        "description": "Labour — Wheel Alignment",
+        "qty": 1,
+        "rate": 110
+      }
+    ],
+    "status": "Paid",
+    "amountPaid": 510.29,
+    "payments": [
+      {
+        "date": "2026-05-25",
+        "amount": 510.29,
+        "method": "Card",
+        "ref": "EFTPOS-1410"
+      }
+    ],
+    "notes": "",
+    "sentLog": [
+      {
+        "type": "email",
+        "to": "priya.s@outlook.com",
+        "date": "2026-05-16"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "invoiceNum": "INV-1007",
+    "jobId": 7,
+    "customerId": 9,
+    "date": "2026-05-21",
+    "dueDate": "2026-06-04",
+    "items": [
+      {
+        "description": "Brake Pad Set (Rear)",
+        "qty": 1,
+        "rate": 79
+      },
+      {
+        "description": "Transmission Fluid (1L)",
+        "qty": 1,
+        "rate": 29.99
+      },
+      {
+        "description": "Labour — Brake Replacement",
+        "qty": 1.5,
+        "rate": 220
+      }
+    ],
+    "status": "Paid",
+    "amountPaid": 471.89,
+    "payments": [
+      {
+        "date": "2026-05-27",
+        "amount": 471.89,
+        "method": "Card",
+        "ref": "EFTPOS-1502"
+      }
+    ],
+    "notes": "",
+    "sentLog": [
+      {
+        "type": "email",
+        "to": "dan.kim@corp.com.au",
+        "date": "2026-05-21"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "invoiceNum": "INV-1008",
+    "jobId": 8,
+    "customerId": 10,
+    "date": "2026-05-28",
+    "dueDate": "2026-06-11",
+    "items": [
+      {
+        "description": "Coolant (1L)",
+        "qty": 4,
+        "rate": 14.99
+      },
+      {
+        "description": "Labour — AC Service",
+        "qty": 1.5,
+        "rate": 180
+      }
+    ],
+    "status": "Paid",
+    "amountPaid": 363.96,
+    "payments": [
+      {
+        "date": "2026-06-04",
+        "amount": 363.96,
+        "method": "Bank Transfer",
+        "ref": "TXN-91200"
+      }
+    ],
+    "notes": "",
+    "sentLog": [
+      {
+        "type": "email",
+        "to": "rachel.t@icloud.com",
+        "date": "2026-05-28"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "invoiceNum": "INV-1009",
+    "jobId": 9,
+    "customerId": 11,
+    "date": "2026-06-03",
+    "dueDate": "2026-06-17",
+    "items": [
+      {
+        "description": "Oil Filter (Standard)",
+        "qty": 1,
+        "rate": 18
+      },
+      {
+        "description": "Engine Oil 5W-30 (5L)",
+        "qty": 1,
+        "rate": 54.99
+      },
+      {
+        "description": "Spark Plug (Single)",
+        "qty": 4,
+        "rate": 12
+      },
+      {
+        "description": "Air Filter",
+        "qty": 1,
+        "rate": 24
+      },
+      {
+        "description": "Labour — Full Service",
+        "qty": 1.5,
+        "rate": 150
+      }
+    ],
+    "status": "Paid",
+    "amountPaid": 351.29,
+    "payments": [
+      {
+        "date": "2026-06-09",
+        "amount": 351.29,
+        "method": "Card",
+        "ref": "EFTPOS-1601"
+      }
+    ],
+    "notes": "",
+    "sentLog": [
+      {
+        "type": "email",
+        "to": "tom.russo@live.com",
+        "date": "2026-06-03"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "invoiceNum": "INV-1010",
+    "jobId": 10,
+    "customerId": 12,
+    "date": "2026-06-07",
+    "dueDate": "2026-06-21",
+    "items": [
+      {
+        "description": "Headlight Globe H7",
+        "qty": 2,
+        "rate": 18
+      },
+      {
+        "description": "Labour — Diagnostics",
+        "qty": 1,
+        "rate": 90
+      },
+      {
+        "description": "Labour — Globe Replacement",
+        "qty": 0.5,
+        "rate": 60
+      }
+    ],
+    "status": "Paid",
+    "amountPaid": 169.4,
+    "payments": [
+      {
+        "date": "2026-06-12",
+        "amount": 169.4,
+        "method": "Cash",
+        "ref": "CASH-0602"
+      }
+    ],
+    "notes": "",
+    "sentLog": [
+      {
+        "type": "email",
+        "to": "sophie.a@gmail.com",
+        "date": "2026-06-07"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "invoiceNum": "INV-1011",
+    "jobId": 11,
+    "customerId": 13,
+    "date": "2026-06-11",
+    "dueDate": "2026-06-25",
+    "items": [
+      {
+        "description": "Alternator (Universal)",
+        "qty": 1,
+        "rate": 275
+      },
+      {
+        "description": "Car Battery 12V",
+        "qty": 1,
+        "rate": 189
+      },
+      {
+        "description": "Labour — Alternator Replacement",
+        "qty": 2.5,
+        "rate": 150
+      }
+    ],
     "status": "Overdue",
     "amountPaid": 0,
     "payments": [],
@@ -126,60 +491,146 @@
     "sentLog": [
       {
         "type": "email",
-        "to": "d.thompson@corp.com",
-        "date": "2026-06-09"
+        "to": "chris.patel@yahoo.com",
+        "date": "2026-06-11"
       },
       {
         "type": "sms",
-        "to": "0434 567 890",
-        "date": "2026-06-09"
+        "to": "0434 567 222",
+        "date": "2026-06-19"
       }
     ]
   },
   {
-    "id": 4,
-    "invoiceNum": "INV-1004",
-    "orderId": null,
-    "customerId": 4,
-    "date": "2026-06-18",
-    "dueDate": "2026-06-14",
+    "id": 12,
+    "invoiceNum": "INV-1012",
+    "jobId": 12,
+    "customerId": 14,
+    "date": "2026-06-15",
+    "dueDate": "2026-06-19",
     "items": [
       {
         "description": "Oil Filter (Standard)",
-        "qty": 3,
+        "qty": 1,
         "rate": 18
       },
       {
         "description": "Engine Oil 5W-30 (5L)",
-        "qty": 3,
+        "qty": 1,
         "rate": 54.99
       },
       {
-        "description": "Coolant (1L)",
-        "qty": 2,
-        "rate": 14.99
+        "description": "Cabin Filter",
+        "qty": 1,
+        "rate": 28
       },
       {
-        "description": "Labour — Multi-Vehicle Service",
-        "qty": 1,
-        "rate": 380
+        "description": "Labour — Full Service",
+        "qty": 1.5,
+        "rate": 150
+      },
+      {
+        "description": "Labour — Tyre Rotation",
+        "qty": 0.5,
+        "rate": 50
       }
     ],
     "status": "Overdue",
     "amountPaid": 0,
     "payments": [],
-    "notes": "Fleet service for Williams Couriers",
+    "notes": "",
     "sentLog": [
       {
         "type": "email",
-        "to": "emma.w@business.com",
-        "date": "2026-06-18"
+        "to": "amy.walker@business.com",
+        "date": "2026-06-15"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "invoiceNum": "INV-1013",
+    "jobId": null,
+    "customerId": 2,
+    "date": "2026-06-18",
+    "dueDate": "2026-06-16",
+    "items": [
+      {
+        "description": "Oil Filter (Standard)",
+        "qty": 2,
+        "rate": 18
       },
       {
-        "type": "sms",
-        "to": "0445 678 901",
+        "description": "Engine Oil 5W-30 (5L)",
+        "qty": 2,
+        "rate": 54.99
+      },
+      {
+        "description": "Labour — Oil Change (x2)",
+        "qty": 1,
+        "rate": 120
+      }
+    ],
+    "status": "Overdue",
+    "amountPaid": 0,
+    "payments": [],
+    "notes": "Fleet oil change — 2 vehicles",
+    "sentLog": [
+      {
+        "type": "email",
+        "to": "sarah.chen@gmail.com",
         "date": "2026-06-18"
       }
     ]
+  },
+  {
+    "id": 14,
+    "invoiceNum": "INV-1014",
+    "jobId": null,
+    "customerId": 11,
+    "date": "2026-06-20",
+    "dueDate": "2026-06-14",
+    "items": [
+      {
+        "description": "Wiper Blades (Pair)",
+        "qty": 2,
+        "rate": 22
+      },
+      {
+        "description": "Labour — Wiper Replacement",
+        "qty": 0.5,
+        "rate": 60
+      }
+    ],
+    "status": "Overdue",
+    "amountPaid": 0,
+    "payments": [],
+    "notes": "2 sets of wipers for both utes",
+    "sentLog": []
+  },
+  {
+    "id": 15,
+    "invoiceNum": "INV-1015",
+    "jobId": null,
+    "customerId": 7,
+    "date": "2026-06-22",
+    "dueDate": "2026-06-12",
+    "items": [
+      {
+        "description": "Power Steering Fluid (500ml)",
+        "qty": 2,
+        "rate": 19.99
+      },
+      {
+        "description": "Labour — Fluid Top-Up",
+        "qty": 0.5,
+        "rate": 60
+      }
+    ],
+    "status": "Overdue",
+    "amountPaid": 0,
+    "payments": [],
+    "notes": "",
+    "sentLog": []
   }
 ]

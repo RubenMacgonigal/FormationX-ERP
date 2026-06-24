@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "email": "admin@formationx.com",
+    "name": "Admin User",
+    "role": "Administrator",
+    "passwordHash": "5bfe2098519b52d498fab953958446bd:3dd74ddff634eece6c02d1554f048138ed8da1cb134a7320ee9885e4687b3ae0"
+  },
+  {
+    "id": 2,
+    "email": "sales@formationx.com",
+    "name": "Sales Manager",
+    "role": "Manager",
+    "passwordHash": "836a5f119203a6ee23cd541b407cf0a9:2103ca71a7bbd6f77ee88fb832fb38e9f2b6db2feaa6a53f17a7e6501f455d85"
+  },
+  {
+    "id": 3,
+    "email": "staff@formationx.com",
+    "name": "Warehouse Staff",
+    "role": "Staff",
+    "passwordHash": "430725fd705eddf7d0629c49a2a17c10:9c95908c86d79e3a54738aec0fe0014faa2ba4a8d3dab6f1e275aecc9e75a433"
+  }
+]

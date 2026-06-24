@@ -7,7 +7,7 @@
     "supplierId": 1,
     "costPrice": 6.5,
     "unitPrice": 18,
-    "quantity": 119,
+    "quantity": 85,
     "reorderLevel": 20,
     "status": "In Stock"
   },
@@ -19,7 +19,7 @@
     "supplierId": 2,
     "costPrice": 35,
     "unitPrice": 89,
-    "quantity": 38,
+    "quantity": 28,
     "reorderLevel": 10,
     "status": "In Stock"
   },
@@ -31,7 +31,7 @@
     "supplierId": 3,
     "costPrice": 22,
     "unitPrice": 54.99,
-    "quantity": 7,
+    "quantity": 12,
     "reorderLevel": 15,
     "status": "Low Stock"
   },
@@ -43,7 +43,7 @@
     "supplierId": 1,
     "costPrice": 8,
     "unitPrice": 24,
-    "quantity": 65,
+    "quantity": 45,
     "reorderLevel": 15,
     "status": "In Stock"
   },
@@ -55,7 +55,7 @@
     "supplierId": 1,
     "costPrice": 4.5,
     "unitPrice": 12,
-    "quantity": 196,
+    "quantity": 150,
     "reorderLevel": 40,
     "status": "In Stock"
   },
@@ -79,7 +79,7 @@
     "supplierId": 4,
     "costPrice": 85,
     "unitPrice": 189,
-    "quantity": 14,
+    "quantity": 9,
     "reorderLevel": 5,
     "status": "In Stock"
   },
@@ -91,8 +91,128 @@
     "supplierId": 3,
     "costPrice": 5,
     "unitPrice": 14.99,
-    "quantity": 90,
+    "quantity": 60,
     "reorderLevel": 20,
+    "status": "In Stock"
+  },
+  {
+    "id": 9,
+    "sku": "FX-1009",
+    "name": "Timing Belt Kit",
+    "category": "Engine Parts",
+    "supplierId": 6,
+    "costPrice": 65,
+    "unitPrice": 149,
+    "quantity": 6,
+    "reorderLevel": 3,
+    "status": "In Stock"
+  },
+  {
+    "id": 10,
+    "sku": "FX-1010",
+    "name": "Brake Pad Set (Rear)",
+    "category": "Brakes",
+    "supplierId": 9,
+    "costPrice": 30,
+    "unitPrice": 79,
+    "quantity": 18,
+    "reorderLevel": 8,
+    "status": "In Stock"
+  },
+  {
+    "id": 11,
+    "sku": "FX-1011",
+    "name": "Transmission Fluid (1L)",
+    "category": "Fluids & Oils",
+    "supplierId": 7,
+    "costPrice": 12,
+    "unitPrice": 29.99,
+    "quantity": 25,
+    "reorderLevel": 10,
+    "status": "In Stock"
+  },
+  {
+    "id": 12,
+    "sku": "FX-1012",
+    "name": "Cabin Filter",
+    "category": "Filters",
+    "supplierId": 12,
+    "costPrice": 10,
+    "unitPrice": 28,
+    "quantity": 35,
+    "reorderLevel": 10,
+    "status": "In Stock"
+  },
+  {
+    "id": 13,
+    "sku": "FX-1013",
+    "name": "Alternator (Universal)",
+    "category": "Electrical",
+    "supplierId": 8,
+    "costPrice": 120,
+    "unitPrice": 275,
+    "quantity": 4,
+    "reorderLevel": 2,
+    "status": "In Stock"
+  },
+  {
+    "id": 14,
+    "sku": "FX-1014",
+    "name": "Wiper Blades (Pair)",
+    "category": "Engine Parts",
+    "supplierId": 10,
+    "costPrice": 8,
+    "unitPrice": 22,
+    "quantity": 40,
+    "reorderLevel": 15,
+    "status": "In Stock"
+  },
+  {
+    "id": 15,
+    "sku": "FX-1015",
+    "name": "Headlight Globe H7",
+    "category": "Electrical",
+    "supplierId": 15,
+    "costPrice": 6,
+    "unitPrice": 18,
+    "quantity": 50,
+    "reorderLevel": 20,
+    "status": "In Stock"
+  },
+  {
+    "id": 16,
+    "sku": "FX-1016",
+    "name": "Fuel Filter",
+    "category": "Filters",
+    "supplierId": 12,
+    "costPrice": 12,
+    "unitPrice": 34,
+    "quantity": 20,
+    "reorderLevel": 8,
+    "status": "In Stock"
+  },
+  {
+    "id": 17,
+    "sku": "FX-1017",
+    "name": "Tyre 205/55R16 (Each)",
+    "category": "Tyres",
+    "supplierId": 5,
+    "costPrice": 75,
+    "unitPrice": 165,
+    "quantity": 8,
+    "reorderLevel": 4,
+    "status": "In Stock"
+  },
+  {
+    "id": 18,
+    "sku": "FX-1018",
+    "name": "Power Steering Fluid (500ml)",
+    "category": "Fluids & Oils",
+    "supplierId": 14,
+    "costPrice": 7,
+    "unitPrice": 19.99,
+    "quantity": 15,
+    "reorderLevel": 5,
     "status": "In Stock"
   }
 ]

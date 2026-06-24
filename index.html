@@ -57,7 +57,8 @@
                 <a href="#" class="nav-item" data-page="suppliers"><i class="fas fa-truck"></i><span>Suppliers</span></a>
                 <a href="#" class="nav-item" data-page="inventory"><i class="fas fa-boxes-stacked"></i><span>Inventory</span></a>
                 <div class="nav-group-label">Transactions</div>
-                <a href="#" class="nav-item" data-page="orders"><i class="fas fa-shopping-cart"></i><span>Orders</span></a>
+                <a href="#" class="nav-item" data-page="jobs"><i class="fas fa-wrench"></i><span>Jobs</span></a>
+                <a href="#" class="nav-item" data-page="orders"><i class="fas fa-truck"></i><span>Purchase Orders</span></a>
                 <a href="#" class="nav-item" data-page="invoices"><i class="fas fa-file-invoice-dollar"></i><span>Invoices</span></a>
                 <div class="nav-group-label">Insights</div>
                 <a href="#" class="nav-item" data-page="reports"><i class="fas fa-chart-bar"></i><span>Reports</span></a>
@@ -69,6 +70,7 @@
                     <div class="user-name">Admin User</div>
                     <div class="user-role">Administrator</div>
                 </div>
+                <button class="sidebar-logout" onclick="logoutUser()" title="Log Out"><i class="fas fa-sign-out-alt"></i></button>
             </div>
         </aside>
 
@@ -134,8 +136,8 @@
         <a href="#" onclick="navigateTo('customers'); openDrawer('customer'); return false;"><i class="fas fa-user-plus"></i> New Customer</a>
         <a href="#" onclick="navigateTo('suppliers'); openDrawer('supplier'); return false;"><i class="fas fa-truck"></i> New Supplier</a>
         <a href="#" onclick="navigateTo('inventory'); openDrawer('inventory'); return false;"><i class="fas fa-box"></i> New Item</a>
-        <a href="#" onclick="navigateTo('orders'); openDrawer('order'); return false;"><i class="fas fa-shopping-cart"></i> New Sales Order</a>
-        <a href="#" onclick="window._orderTab&&window._orderTab('Purchase'); navigateTo('orders'); openDrawer('purchaseOrder'); return false;"><i class="fas fa-truck"></i> New Purchase Order</a>
+        <a href="#" onclick="navigateTo('jobs'); openDrawer('job'); return false;"><i class="fas fa-wrench"></i> New Job</a>
+        <a href="#" onclick="navigateTo('orders'); openDrawer('purchaseOrder'); return false;"><i class="fas fa-truck"></i> New Purchase Order</a>
         <a href="#" onclick="navigateTo('invoices'); openDrawer('invoice'); return false;"><i class="fas fa-file-invoice"></i> New Invoice</a>
     </div>
 

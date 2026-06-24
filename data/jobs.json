@@ -1,0 +1,625 @@
+[
+  {
+    "id": 1,
+    "jobNum": "JOB-0001",
+    "date": "2026-03-30",
+    "customerId": 1,
+    "vehicle": {
+      "make": "Toyota",
+      "model": "Camry",
+      "year": "2022",
+      "rego": "ABC123"
+    },
+    "description": "Full service — 60,000km",
+    "parts": [
+      {
+        "inventoryId": 1,
+        "qty": 1,
+        "price": 18
+      },
+      {
+        "inventoryId": 3,
+        "qty": 1,
+        "price": 54.99
+      },
+      {
+        "inventoryId": 5,
+        "qty": 4,
+        "price": 12
+      }
+    ],
+    "labour": [
+      {
+        "description": "Full Service",
+        "hours": 1.5,
+        "rate": 150
+      }
+    ],
+    "status": "Invoiced",
+    "notes": ""
+  },
+  {
+    "id": 2,
+    "jobNum": "JOB-0002",
+    "date": "2026-04-07",
+    "customerId": 2,
+    "vehicle": {
+      "make": "Toyota",
+      "model": "HiAce",
+      "year": "2020",
+      "rego": "FLT001"
+    },
+    "description": "Front brake replacement — fleet vehicle 1",
+    "parts": [
+      {
+        "inventoryId": 2,
+        "qty": 2,
+        "price": 89
+      },
+      {
+        "inventoryId": 6,
+        "qty": 2,
+        "price": 110
+      }
+    ],
+    "labour": [
+      {
+        "description": "Brake Replacement",
+        "hours": 2,
+        "rate": 220
+      }
+    ],
+    "status": "Invoiced",
+    "notes": ""
+  },
+  {
+    "id": 3,
+    "jobNum": "JOB-0003",
+    "date": "2026-04-20",
+    "customerId": 6,
+    "vehicle": {
+      "make": "Mazda",
+      "model": "CX-5",
+      "year": "2023",
+      "rego": "DEF456"
+    },
+    "description": "Oil change + cabin filter",
+    "parts": [
+      {
+        "inventoryId": 1,
+        "qty": 1,
+        "price": 18
+      },
+      {
+        "inventoryId": 3,
+        "qty": 1,
+        "price": 54.99
+      },
+      {
+        "inventoryId": 12,
+        "qty": 1,
+        "price": 28
+      }
+    ],
+    "labour": [
+      {
+        "description": "Oil Change",
+        "hours": 0.5,
+        "rate": 60
+      }
+    ],
+    "status": "Invoiced",
+    "notes": ""
+  },
+  {
+    "id": 4,
+    "jobNum": "JOB-0004",
+    "date": "2026-04-30",
+    "customerId": 7,
+    "vehicle": {
+      "make": "Toyota",
+      "model": "HiLux",
+      "year": "2020",
+      "rego": "OCP100"
+    },
+    "description": "Timing belt replacement",
+    "parts": [
+      {
+        "inventoryId": 9,
+        "qty": 1,
+        "price": 149
+      },
+      {
+        "inventoryId": 8,
+        "qty": 2,
+        "price": 14.99
+      }
+    ],
+    "labour": [
+      {
+        "description": "Timing Belt Replacement",
+        "hours": 3,
+        "rate": 150
+      }
+    ],
+    "status": "Invoiced",
+    "notes": ""
+  },
+  {
+    "id": 5,
+    "jobNum": "JOB-0005",
+    "date": "2026-05-07",
+    "customerId": 3,
+    "vehicle": {
+      "make": "Ford",
+      "model": "Ranger",
+      "year": "2019",
+      "rego": "XYZ789"
+    },
+    "description": "Battery replacement + air filter",
+    "parts": [
+      {
+        "inventoryId": 7,
+        "qty": 1,
+        "price": 189
+      },
+      {
+        "inventoryId": 4,
+        "qty": 1,
+        "price": 24
+      }
+    ],
+    "labour": [
+      {
+        "description": "Battery + Filter",
+        "hours": 1,
+        "rate": 85
+      }
+    ],
+    "status": "Invoiced",
+    "notes": ""
+  },
+  {
+    "id": 6,
+    "jobNum": "JOB-0006",
+    "date": "2026-05-15",
+    "customerId": 8,
+    "vehicle": {
+      "make": "Kia",
+      "model": "Sportage",
+      "year": "2021",
+      "rego": "KIA321"
+    },
+    "description": "Full service + wheel alignment",
+    "parts": [
+      {
+        "inventoryId": 1,
+        "qty": 1,
+        "price": 18
+      },
+      {
+        "inventoryId": 3,
+        "qty": 1,
+        "price": 54.99
+      },
+      {
+        "inventoryId": 5,
+        "qty": 4,
+        "price": 12
+      },
+      {
+        "inventoryId": 4,
+        "qty": 1,
+        "price": 24
+      }
+    ],
+    "labour": [
+      {
+        "description": "Full Service",
+        "hours": 1.5,
+        "rate": 150
+      },
+      {
+        "description": "Wheel Alignment",
+        "hours": 1,
+        "rate": 110
+      }
+    ],
+    "status": "Invoiced",
+    "notes": ""
+  },
+  {
+    "id": 7,
+    "jobNum": "JOB-0007",
+    "date": "2026-05-20",
+    "customerId": 9,
+    "vehicle": {
+      "make": "Hyundai",
+      "model": "i30",
+      "year": "2022",
+      "rego": "DKM200"
+    },
+    "description": "Rear brake pads + fluid top-up",
+    "parts": [
+      {
+        "inventoryId": 10,
+        "qty": 1,
+        "price": 79
+      },
+      {
+        "inventoryId": 11,
+        "qty": 1,
+        "price": 29.99
+      }
+    ],
+    "labour": [
+      {
+        "description": "Brake Replacement",
+        "hours": 1.5,
+        "rate": 220
+      }
+    ],
+    "status": "Invoiced",
+    "notes": "Regular customer — monthly"
+  },
+  {
+    "id": 8,
+    "jobNum": "JOB-0008",
+    "date": "2026-05-27",
+    "customerId": 10,
+    "vehicle": {
+      "make": "Subaru",
+      "model": "Outback",
+      "year": "2018",
+      "rego": "SUB555"
+    },
+    "description": "AC service + coolant flush",
+    "parts": [
+      {
+        "inventoryId": 8,
+        "qty": 4,
+        "price": 14.99
+      }
+    ],
+    "labour": [
+      {
+        "description": "AC Service",
+        "hours": 1.5,
+        "rate": 180
+      }
+    ],
+    "status": "Invoiced",
+    "notes": ""
+  },
+  {
+    "id": 9,
+    "jobNum": "JOB-0009",
+    "date": "2026-06-02",
+    "customerId": 11,
+    "vehicle": {
+      "make": "Toyota",
+      "model": "HiLux",
+      "year": "2019",
+      "rego": "RUS001"
+    },
+    "description": "Full service — work ute 1",
+    "parts": [
+      {
+        "inventoryId": 1,
+        "qty": 1,
+        "price": 18
+      },
+      {
+        "inventoryId": 3,
+        "qty": 1,
+        "price": 54.99
+      },
+      {
+        "inventoryId": 5,
+        "qty": 4,
+        "price": 12
+      },
+      {
+        "inventoryId": 4,
+        "qty": 1,
+        "price": 24
+      }
+    ],
+    "labour": [
+      {
+        "description": "Full Service",
+        "hours": 1.5,
+        "rate": 150
+      }
+    ],
+    "status": "Invoiced",
+    "notes": ""
+  },
+  {
+    "id": 10,
+    "jobNum": "JOB-0010",
+    "date": "2026-06-06",
+    "customerId": 12,
+    "vehicle": {
+      "make": "VW",
+      "model": "Golf",
+      "year": "2022",
+      "rego": "VWG777"
+    },
+    "description": "Headlight globe replacement + diagnostics",
+    "parts": [
+      {
+        "inventoryId": 15,
+        "qty": 2,
+        "price": 18
+      }
+    ],
+    "labour": [
+      {
+        "description": "Diagnostics",
+        "hours": 1,
+        "rate": 90
+      },
+      {
+        "description": "Globe Replacement",
+        "hours": 0.5,
+        "rate": 60
+      }
+    ],
+    "status": "Invoiced",
+    "notes": ""
+  },
+  {
+    "id": 11,
+    "jobNum": "JOB-0011",
+    "date": "2026-06-10",
+    "customerId": 13,
+    "vehicle": {
+      "make": "Nissan",
+      "model": "Navara",
+      "year": "2017",
+      "rego": "NAV999"
+    },
+    "description": "Alternator replacement",
+    "parts": [
+      {
+        "inventoryId": 13,
+        "qty": 1,
+        "price": 275
+      },
+      {
+        "inventoryId": 7,
+        "qty": 1,
+        "price": 189
+      }
+    ],
+    "labour": [
+      {
+        "description": "Alternator Replacement",
+        "hours": 2.5,
+        "rate": 150
+      }
+    ],
+    "status": "Invoiced",
+    "notes": "Battery also replaced — was failing"
+  },
+  {
+    "id": 12,
+    "jobNum": "JOB-0012",
+    "date": "2026-06-14",
+    "customerId": 14,
+    "vehicle": {
+      "make": "Mercedes",
+      "model": "C200",
+      "year": "2023",
+      "rego": "MRC001"
+    },
+    "description": "Full service + tyre rotation",
+    "parts": [
+      {
+        "inventoryId": 1,
+        "qty": 1,
+        "price": 18
+      },
+      {
+        "inventoryId": 3,
+        "qty": 1,
+        "price": 54.99
+      },
+      {
+        "inventoryId": 12,
+        "qty": 1,
+        "price": 28
+      }
+    ],
+    "labour": [
+      {
+        "description": "Full Service",
+        "hours": 1.5,
+        "rate": 150
+      },
+      {
+        "description": "Tyre Rotation",
+        "hours": 0.5,
+        "rate": 50
+      }
+    ],
+    "status": "Invoiced",
+    "notes": ""
+  },
+  {
+    "id": 13,
+    "jobNum": "JOB-0013",
+    "date": "2026-06-17",
+    "customerId": 4,
+    "vehicle": {
+      "make": "Hyundai",
+      "model": "iLoad",
+      "year": "2021",
+      "rego": "WLC100"
+    },
+    "description": "Multi-vehicle service — 3 courier vans",
+    "parts": [
+      {
+        "inventoryId": 1,
+        "qty": 3,
+        "price": 18
+      },
+      {
+        "inventoryId": 3,
+        "qty": 3,
+        "price": 54.99
+      },
+      {
+        "inventoryId": 8,
+        "qty": 2,
+        "price": 14.99
+      }
+    ],
+    "labour": [
+      {
+        "description": "Full Service",
+        "hours": 1.5,
+        "rate": 150
+      },
+      {
+        "description": "Full Service",
+        "hours": 1.5,
+        "rate": 150
+      },
+      {
+        "description": "Oil Change",
+        "hours": 0.5,
+        "rate": 60
+      }
+    ],
+    "status": "In Progress",
+    "notes": "Fleet service for Williams Couriers"
+  },
+  {
+    "id": 14,
+    "jobNum": "JOB-0014",
+    "date": "2026-06-19",
+    "customerId": 15,
+    "vehicle": {
+      "make": "Mitsubishi",
+      "model": "Triton",
+      "year": "2020",
+      "rego": "TRI444"
+    },
+    "description": "Fuel filter + transmission service",
+    "parts": [
+      {
+        "inventoryId": 16,
+        "qty": 1,
+        "price": 34
+      },
+      {
+        "inventoryId": 11,
+        "qty": 2,
+        "price": 29.99
+      }
+    ],
+    "labour": [
+      {
+        "description": "Transmission Service",
+        "hours": 1.5,
+        "rate": 140
+      }
+    ],
+    "status": "In Progress",
+    "notes": ""
+  },
+  {
+    "id": 15,
+    "jobNum": "JOB-0015",
+    "date": "2026-06-21",
+    "customerId": 2,
+    "vehicle": {
+      "make": "Toyota",
+      "model": "HiAce",
+      "year": "2020",
+      "rego": "FLT002"
+    },
+    "description": "Front brake rotors — awaiting stock",
+    "parts": [
+      {
+        "inventoryId": 6,
+        "qty": 4,
+        "price": 110
+      }
+    ],
+    "labour": [
+      {
+        "description": "Brake Replacement",
+        "hours": 2,
+        "rate": 220
+      }
+    ],
+    "status": "Draft",
+    "notes": "Awaiting rotor stock from PO-0010"
+  },
+  {
+    "id": 16,
+    "jobNum": "JOB-0016",
+    "date": "2026-06-22",
+    "customerId": 1,
+    "vehicle": {
+      "make": "Toyota",
+      "model": "Camry",
+      "year": "2022",
+      "rego": "ABC123"
+    },
+    "description": "Wiper blades + washer fluid top-up",
+    "parts": [
+      {
+        "inventoryId": 14,
+        "qty": 1,
+        "price": 22
+      }
+    ],
+    "labour": [
+      {
+        "description": "Wiper Replacement",
+        "hours": 0.25,
+        "rate": 60
+      }
+    ],
+    "status": "Completed",
+    "notes": ""
+  },
+  {
+    "id": 17,
+    "jobNum": "JOB-0017",
+    "date": "2026-06-23",
+    "customerId": 9,
+    "vehicle": {
+      "make": "Hyundai",
+      "model": "i30",
+      "year": "2022",
+      "rego": "DKM200"
+    },
+    "description": "4 new tyres + wheel alignment",
+    "parts": [
+      {
+        "inventoryId": 17,
+        "qty": 4,
+        "price": 165
+      }
+    ],
+    "labour": [
+      {
+        "description": "Tyre Fitting (x4)",
+        "hours": 1,
+        "rate": 80
+      },
+      {
+        "description": "Wheel Alignment",
+        "hours": 1,
+        "rate": 110
+      }
+    ],
+    "status": "Draft",
+    "notes": "Customer confirmed — booked for tomorrow"
+  }
+]
