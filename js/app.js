@@ -2619,7 +2619,7 @@ function renderSettings() {
                 </form>
             </div>`,
             tests: `<div class="settings-section"><h3>Automated System Tests</h3>
-                <p style="color:#64748B;margin-bottom:16px">Run automated tests to verify all modules, data integrity, and calculations. Screenshot the results for your assessment report.</p>
+                <p style="color:#64748B;margin-bottom:16px">Run automated tests to verify all modules, data integrity, and calculations.</p>
                 <button class="btn btn-primary" onclick="runSystemTests()" id="run-tests-btn"><i class="fas fa-play"></i> Run All Tests</button>
                 <div id="test-results" style="margin-top:20px"></div>
             </div>`,
@@ -3295,7 +3295,7 @@ async function runSystemTests() {
                     <td style="color:var(--text-secondary)">${escapeHTML(r.detail)}</td>
                 </tr>`).join('')}</tbody>
             </table>
-            <p style="margin-top:12px;font-size:12px;color:var(--text-light)">Tests run at ${new Date().toLocaleString('en-AU')} — screenshot this for your assessment report.</p>`;
+            <p style="margin-top:12px;font-size:12px;color:var(--text-light)">Tests run at ${new Date().toLocaleString('en-AU')}</p>`;
     }
     if (btn) { btn.disabled = false; btn.innerHTML = '<i class="fas fa-play"></i> Run All Tests'; }
     DB.log('Ran system tests: ' + passCount + ' passed, ' + failCount + ' failed, ' + warnCount + ' warnings');
